@@ -1,0 +1,92 @@
+@import "../../../variable";
+
+
+.row {
+  .product-detail, .product-detail-sub{
+    position: relative;
+    display: flex;
+    h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      margin: 0;
+      position: absolute;
+      bottom: 55px;
+      z-index: 1;
+      color: $color-text-title;
+      opacity: 0.7;
+    }
+    .card, .card-sub {
+      max-height: 420px;
+      max-width: 270px;
+      border: none;
+      position: relative;
+      .card-item, .card-item-sub {
+        display: flex;
+        width: 100%;
+        margin-bottom: 40px;
+        img, .card-item-img-sub {
+          cursor: pointer;
+          display: block;
+          width: 100%;
+          max-width: 270px;
+          height: 300px;
+          transition: all .3s ease-in-out;
+          &:first-child {
+            display: block;
+          }
+          &:nth-child(n+2){
+            display: none;
+          }
+        }
+      }
+      &:hover {
+        .card-item, .card-item-sub {
+          img, .card-item-img {
+            &:nth-child(n) {
+              display: none;
+            }
+            &:nth-child(2) {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    .card-body, .card-footer {
+      text-align: left;
+      padding: 0;
+    }
+    .card-body{
+      .card-title {
+        cursor: pointer;
+        font-size: 14px;
+        color: $color-product-item;
+        &:hover {
+          color: $color-text-hover;
+        }
+      }
+      .card-text {
+        font-size: 16px;
+        color: $color-text-hover;
+        font-weight: 700;
+      }
+    }
+    .card-footer {
+      background: none;
+      border: none;
+      width: 100%;
+      overflow: hidden;
+      position: absolute;
+      bottom: 90px;
+      button {
+        font-size: 16px;
+        background: $background-product;
+        color: $color-text-default;
+        max-height: 40px;
+        width: 100%;
+        border-radius: 0px;
+      }
+    }
+  }
+
+}
