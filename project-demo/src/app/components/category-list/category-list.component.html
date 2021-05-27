@@ -1,0 +1,44 @@
+
+<div *ngIf="inputCategories" class="mt-3">
+    <h2 class="text-center">
+      BROWSE
+    </h2>
+  <div *ngFor="let category of inputCategories">
+    <mat-accordion >
+      <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false" [hideToggle]="category.subcategory.length === 0">
+        <mat-expansion-panel-header style="max-height: 48px">
+          <mat-panel-title (click)="viewCategoryDetails(category)">
+            {{category.name}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-panel-title
+          style="cursor: pointer; margin-bottom: 5px"
+          (click)="viewCategoryDetails(category)"
+          *ngFor="let subcategory of category.subcategory">
+          {{subcategory.name}}
+        </mat-panel-title>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  </div>
+
+
+  <div *ngIf="categories" class="row category-list">
+        <div class="col-md-4 category-item"*ngFor="let category of categories">
+          <div class="category-content">
+            <img  [src]="category.image_url">
+            <div class="category-content-title">
+              <h5>{{category.name}}</h5>
+              <p>{{category.products_count}} <span>PRODUCT</span></p>
+            </div>
+          </div>
+        </div>
+  </div>
+
+<!-- localhost:4200/categories/3 -->
+
+
+
+
+
+

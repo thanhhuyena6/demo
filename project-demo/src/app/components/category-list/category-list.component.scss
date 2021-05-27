@@ -1,0 +1,61 @@
+@import "../../../variable";
+
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+.mat-expansion-panel:not([class*=mat-elevation-z]){
+  box-shadow: none;
+}
+
+.category-list {
+  .category-item {
+
+    &:nth-child(8){
+      display: none;
+    }
+    .category-content {
+      cursor: pointer;
+      position: relative;
+      margin-bottom: 20px;
+      img {
+        max-width: 270px;
+        width: 100%;
+        height: 100%;
+        max-height: 300px;
+      }
+      h5 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        color: $color-text-product;
+      }
+      p {
+        display: flex;
+        color: $color-product-item;
+        span {
+          margin-left: 5px;
+        }
+      }
+      .category-content-title{
+        width: 100%;
+        padding: 10px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: $color-default;
+        position: absolute;
+        bottom: 15%;
+        left: 0;
+        transition: all .3s ease;
+      }
+      &:hover .category-content-title {
+        background: $background-product;
+        h5, p {
+          color: $color-default;
+        }
+      }
+    }
+  }
+
+}

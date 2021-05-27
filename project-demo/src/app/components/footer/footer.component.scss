@@ -1,0 +1,69 @@
+@import "../../../variable";
+
+footer{
+  background-color: $background-color;
+  padding: 10px 0 15px;
+  font-size: 18px;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .footer-secondary {
+      padding: 10px 0;
+      .payment-icons {
+        display: flex;
+        .payment-icon {
+          cursor: pointer;
+          background-color: rgba(255,255,255,.1);
+          display: inline-block;
+          opacity: .6;
+          -webkit-transition: opacity .3s;
+          -o-transition: opacity .3s;
+          transition: opacity .3s;
+          border-radius: 5px;
+          padding: 3px 5px 0 5px;
+          margin: 3px 3px 0;
+          &:hover{
+            opacity: 1;
+          }
+          svg {
+            vertical-align: middle;
+            height: 20px;
+            width: auto!important;
+            fill: $color-default;
+          }
+        }
+      }
+    }
+    .footer-primary {
+      text-transform: uppercase;
+      .menu-secondary-container {
+        color: rgba(255,255,255,.5);
+        .footer-nav {
+          display: flex;
+          margin: 5px 0;
+          padding-bottom: 5px;
+          opacity: .8;
+          li {
+            margin: 0 .4em;
+            display: inline-block;
+            a {
+              color: $color-text-footer;
+              font-weight: 300;
+              &:hover {
+                color: $color-default;
+              }
+            }
+          }
+        }
+      }
+    }
+    .copyright-footer {
+      color: $color-text-footer;
+      font-weight: 300;
+      strong{
+        font-weight: 700;
+      }
+    }
+  }
+}
