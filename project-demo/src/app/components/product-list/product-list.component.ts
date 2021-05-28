@@ -15,7 +15,7 @@ import {CategoryService} from "../../services/category/category.service";
 export class ProductListComponent implements OnInit {
   products: Product[];
   category: Category;
-  product: Product;
+  item: Product;
   subcategory: SubCategory;
   constructor(private route: ActivatedRoute,
               private authService: AuthService,
@@ -27,7 +27,7 @@ export class ProductListComponent implements OnInit {
         this.productService.getProductById(params.get('id'))
           .subscribe(res => {
             console.log(res)
-            this.product = res
+            this.item = res
           })
       } else {
         router.navigate(['/home'])

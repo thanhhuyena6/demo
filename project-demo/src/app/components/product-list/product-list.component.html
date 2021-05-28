@@ -24,9 +24,9 @@
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
-<div class="row" *ngIf="product">
-  <div class=" col-md-4 product-detail" *ngFor="let products of product.products">
-    <h3>{{product.name}}</h3>
+<div class="row" *ngIf="item">
+  <div class=" col-md-4 product-detail" *ngFor="let products of item.products">
+    <h3>{{item.name}}</h3>
     <div class="card">
       <div class="card-item">
         <img class="card-item-img" *ngFor="let images of products.images" [src]="images.image_url">
@@ -37,7 +37,7 @@
       </div>
       <div class="card-footer">
         <div class="row justify-content-center">
-          <button (click)="viewProductDetails(product)" class="btn btn-outline-info">
+          <button (click)="viewProductDetails(products)" class="btn btn-outline-info">
             QUICK VIEW
           </button>
 <!--          <button class="btn btn-outline-primary">-->
@@ -48,11 +48,11 @@
     </div>
   </div>
 </div>
-<div class="row" *ngIf="product">
+<div class="row" *ngIf="item">
   <div class="product-detail col-md-12">
-    <div class="product-detail-sub col-md-4" *ngFor="let subcategory of product.subcategory">
+    <div class="product-detail-sub col-md-4" *ngFor="let subcategory of item.subcategory">
       <div class="col-md-12" *ngFor="let products of subcategory.products">
-        <h3>{{product.name}}</h3>
+        <h3>{{item.name}}</h3>
         <div class="card card-sub" style="height: 400px">
           <div class="card-item-sub">
             <img class="card-item-img-sub" *ngFor="let images of products.images" [src]="images.image_url">
@@ -65,7 +65,7 @@
           </div>
           <div class="card-footer">
             <div class="row justify-content-center">
-              <button (click)="viewProductDetails(product)" class="btn btn-outline-info">
+              <button (click)="viewProductDetails(products)" class="btn btn-outline-info">
                 View details
               </button>
 <!--              <button class="btn btn-outline-primary">-->

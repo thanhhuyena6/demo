@@ -26,7 +26,7 @@ export class ProductService {
     return this.http.get<Product>(urlById);
   }
   getProductDetailById(id: any): Observable<Product>{
-    const urlByIdDetail = `${this.urlDetail}`;
+    const urlByIdDetail = `${this.urlDetail}/${id}`;
     return this.http.get<Product>(urlByIdDetail);
   }
 

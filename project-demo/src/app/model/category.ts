@@ -10,4 +10,5 @@ export class Category {
   products: Product[];
   subcategory: SubCategory[];
   products_count: number;
+  categories: string;
 }

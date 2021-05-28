@@ -1,6 +1,6 @@
   <app-header></app-header>
   <app-breadcrumb></app-breadcrumb>
-      <ng-container>
+  <ng-container>
         <div class="container">
           <mat-sidenav-container class="example-container row">
 
@@ -11,12 +11,10 @@
                 <app-category-list [inputCategories]="categories" ></app-category-list>
               </mat-sidenav>
 
-              <mat-sidenav-content class="col-lg-9" style="min-height: 800px; background: #fff">
+              <mat-sidenav-content class="col-lg-9" style="min-height: 800px; background: #fff; overflow: hidden">
                 <router-outlet></router-outlet>
               </mat-sidenav-content>
-
           </mat-sidenav-container>
         </div>
       </ng-container>
-
   <app-footer></app-footer>
