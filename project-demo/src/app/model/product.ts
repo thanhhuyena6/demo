@@ -1,5 +1,6 @@
 import {Images} from "./images";
 import {SubCategory} from "./sub-category";
+import {Category} from "./category";
 
 export class Product {
   id:number;
@@ -13,4 +14,7 @@ export class Product {
   products: Product[];
   subcategory: SubCategory[];
   category_id: string;
+  product: Product;
+  categories: Category;
+
 }

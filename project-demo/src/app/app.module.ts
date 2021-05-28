@@ -14,9 +14,9 @@ import {HomeComponent} from './components/home/home.component';
 import {CheckoutComponent} from './components/checkout/checkout.component';
 import {OrdersComponent} from './components/orders/orders.component';
 import {ProfileComponent} from './components/profile/profile.component';
-import {BreadcrumbComponent} from "./components/breadcrumb/breadcrumb.component";
+import {BreadcrumbComponent} from './components/breadcrumb/breadcrumb.component';
 import {MenuService} from './services/menu.service';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {CategoryListComponent} from './components/category-list/category-list.component';
 import {CategoryDetailsComponent} from './components/category-details/category-details.component';

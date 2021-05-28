@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {ProductService} from "../../services/product/product.service";
 import {Product} from "../../model/product";
+import {Images} from "../../model/images";
+
+
+
 
 @Component({
   selector: 'app-product-details',
@@ -10,6 +14,7 @@ import {Product} from "../../model/product";
 })
 export class ProductDetailsComponent implements OnInit {
   product: Product;
+  images: Images[];
   constructor(private route: ActivatedRoute,
               private productService: ProductService) {
     // route.paramMap.subscribe((params: ParamMap) => {
@@ -24,12 +29,22 @@ export class ProductDetailsComponent implements OnInit {
       if (params.get('id')){
         this.productService.getProductDetailById(params.get('id'))
           .subscribe(resProduct => {
-            console.log(resProduct)
+            console.log(resProduct);
             this.product = resProduct;
           })
       }
     })
+
   }
+
+  slideConfig = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    // nextArrow: '<button class="btn-next" (click)="next()"></button>\n',
+    // prevArrow: '<button class="btn-prev" (click)="prev()">prev</button>\n',
+    arrows: true,
+  };
 
   ngOnInit(): void {
   }

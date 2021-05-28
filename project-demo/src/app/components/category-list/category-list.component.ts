@@ -12,6 +12,7 @@ import {Product} from "../../model/product";
 export class CategoryListComponent implements OnInit {
   panelOpenState = false;
     categories: Category[];
+    products: Product[];
     @Input() inputCategories: Category[]; // input variable
 
     constructor(private route: ActivatedRoute,
@@ -35,7 +36,7 @@ export class CategoryListComponent implements OnInit {
         })
     }
   // viewCategoryDetails(product: Product){
-  //   this.router.navigate(['categories', product.id], {
+  //   this.router.navigate(['products', product.id], {
   //     queryParams: {
   //       Name: product.name,
   //     }
