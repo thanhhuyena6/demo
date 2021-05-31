@@ -19,14 +19,14 @@ export class AppComponent implements OnInit{
   constructor(public authService: AuthService,
               private categoryService: CategoryService) {
     authService.prepareUserData();
-    authService.refreshInfo();
+    // authService.refreshInfo();
     this.prepareCategories();
   }
 
 
   ngOnInit(): void {
     this.authService.prepareUserData();
-    this.authService.refreshInfo();
+    // this.authService.refreshInfo();
     this.prepareCategories();
   }
 

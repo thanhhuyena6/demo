@@ -27,7 +27,7 @@
         <div class="col-md-4 category-item"*ngFor="let category of categories">
           <div class="category-content">
             <img  [src]="category.image_url">
-            <div class="category-content-title">
+            <div class="category-content-title" (click)="viewCategoryDetails(category)">
               <h5>{{category.name}}</h5>
               <p>{{category.products_count}} <span>PRODUCT</span></p>
             </div>

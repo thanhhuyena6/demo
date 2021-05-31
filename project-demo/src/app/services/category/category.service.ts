@@ -8,8 +8,8 @@ import {Product} from "../../model/product";
   providedIn: 'root'
 })
 export class CategoryService {
-  // private categoryUrl = `http://localhost:3000/categories`;
-  private categoryUrl = `http://localhost:3001/data_category`;
+  private categoryUrl = `http://localhost:3000/categories`;
+  // private categoryUrl = `http://localhost:3001/data_category`;
   private productUrl = `http://localhost:3001/data_category`;
   constructor(private http: HttpClient) { }
   getCategories(): Observable<Category[]>{

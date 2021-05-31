@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders } from "@angular/common/http";
 import {Router} from "@angular/router";
 import {ErrorHandler} from "../../shared/error-handler";
 import {Observable} from "rxjs";
@@ -8,6 +8,9 @@ import {Profile} from "../../model/profile";
 import {Cart} from "../../model/cart";
 import {CartItem} from "../../model/cart-item";
 import {UserData} from "../../model/user-data";
+import {Order} from "../../model/order";
+import {Invoice} from "../../model/invoice";
+import {Payment} from "../../model/payment";
 // import {CartService} from "../cart/cart.service";
 
 @Injectable({
@@ -20,13 +23,12 @@ export class AuthService {
     // private cartService: CartService
   ) {
   }
-
-  _registerUrl = `http://localhost:3000/auth/register`;
-  _loginUrl = `http://localhost:3000/auth/login`;
-  _userUrl = `http://localhost:3000/auth/current-user`;
-  _profileUrl = `http://localhost:3000/profile`;
+  _registerUrl = `https://gumistore.herokuapp.com/api/public/register`;
+  _loginUrl = `https://gumistore.herokuapp.com/api/public/login`;
+  _userUrl = `https://gumistore.herokuapp.com/api/public/profile`;
+  _profileUrl = `https://gumistore.herokuapp.com/api/public/profile`;
   private _usersURL = `http://localhost:3000/auth/system-users`;
-  private _userDataURL = `http://localhost:3000/auth/user-main-data`;
+  private _userDataURL = `https://gumistore.herokuapp.com/api/public/profile`;
 
   private imageChangeUrl = `http://localhost:3000/profile/userprofile/changeprofileimage`;
   private newImageUrl = `http://localhost:3000/profile/userprofile/setprofileimage`;
@@ -43,6 +45,7 @@ export class AuthService {
     return this.http.post<void>(this._registerUrl, registrationInfo);
   }
 
+
   prepareUserData() {
     if (this.isLoggedIn()) {
       this.getCurrentUser().subscribe(resUser => {
@@ -56,15 +59,15 @@ export class AuthService {
     }
   }
 
-  refreshInfo() {
-    if (this.isLoggedIn()) {
-      this.pUserData().subscribe(uData => {
-        this.profile = uData.profile;
-        this.cart = uData.cart;
-        this.cartItem = uData.cartItem;
-      });
-    }
-  }
+  // refreshInfo() {
+  //   if (this.isLoggedIn()) {
+  //     this.pUserData().subscribe(uData => {
+  //       this.profile = uData.profile;
+  //       this.cart = uData.cart;
+  //       this.cartItem = uData.cartItem;
+  //     });
+  //   }
+  // }
 
   pUserData(): Observable<UserData> {
 
@@ -105,6 +108,7 @@ export class AuthService {
   login(user: any): Observable<any> {
     return this.http.post<any>(this._loginUrl, user);
   }
+
 
   getUserProfile(): Observable<Profile> {
     return this.http.get<Profile>(this._profileUrl);

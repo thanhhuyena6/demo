@@ -7,6 +7,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 import {CartComponent} from './components/cart/cart.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -39,6 +41,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
     CartComponent,
     FooterComponent,
     HeaderComponent,

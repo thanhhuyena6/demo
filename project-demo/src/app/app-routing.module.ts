@@ -15,7 +15,7 @@ import {CategoryDetailsComponent} from "./components/category-details/category-d
 import {UserAuthGuard} from "./guards/user-auth.guard";
 import {CategoryResolverService} from "./resolvers/category-resolver.service";
 import {ProductResolverService} from "./resolvers/product-resolver.service";
-// import {ProfileResolverService} from "./resolvers/profile-resolver.service";
+import {ProfileResolverService} from "./resolvers/profile-resolver.service";
 
 const routes: Routes = [
   // {
@@ -26,9 +26,9 @@ const routes: Routes = [
   {
     path : 'profile',
     component: ProfileComponent,
-    // resolve: {
-    //   profile: ProfileResolverService
-    // }
+    resolve: {
+      profile: ProfileResolverService
+    },
     canActivate: [UserAuthGuard]
   },
   {
