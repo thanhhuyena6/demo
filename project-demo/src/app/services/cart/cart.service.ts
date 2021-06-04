@@ -11,8 +11,8 @@ import {CartItem} from "../../model/cart-item";
 export class CartService {
 
   constructor(private  http: HttpClient) { }
-  private  _cartUrl = `http://localhost:3000/cart`;
-  private  _cartItemUrl = `http://localhost:3000/cart_items`;
+  private  _cartUrl = `http://localhost:3003/product`;
+  private  _cartItemUrl = `http://localhost:3003/product`;
   private errorHandler: ErrorHandler = new ErrorHandler();
 
   getCart(id: number): Observable<Cart>{
@@ -35,7 +35,7 @@ export class CartService {
     return this.http.post<void>(orderUrl, createOrderDto);
   }
 
-  removeFromProduct(cartItemId:number, productId: number): Observable<CartItem>{
+  removeFromCart(cartItemId:number, productId: number): Observable<CartItem>{
     const  removeUrl = `${this._cartItemUrl}/${cartItemId}/products/${productId}/remove-from-cart`
     return this.http.delete<CartItem>(removeUrl);
   }

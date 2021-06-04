@@ -25,7 +25,7 @@
 <!--  </div>-->
 <!--</div>-->
 <div class="row" *ngIf="item">
-  <div class=" col-md-4 product-detail" *ngFor="let products of item.products">
+  <div class=" col-md-4 product-list" *ngFor="let products of item.products">
     <h3>{{item.name}}</h3>
     <div class="card">
       <div class="card-item">
@@ -49,8 +49,8 @@
   </div>
 </div>
 <div class="row" *ngIf="item">
-  <div class="product-detail col-md-12">
-    <div class="product-detail-sub col-md-4" *ngFor="let subcategory of item.subcategory">
+  <div class="product-list col-md-12">
+    <div class="product-list-sub col-md-4" *ngFor="let subcategory of item.subcategory">
       <div class="col-md-12" *ngFor="let products of subcategory.products">
         <h3>{{item.name}}</h3>
         <div class="card card-sub" style="height: 400px">

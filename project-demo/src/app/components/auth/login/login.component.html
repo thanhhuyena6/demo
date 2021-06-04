@@ -1,36 +1,33 @@
-<div class="row">
-  <div class="col-md-6 mx-auto">
-    <div class="card rounded-0">
-      <div class="card-header">
-        <h3 class="mb-0">
+<div class="login">
+  <h3 class="login-header-title text-uppercase">
+    Login
+  </h3>
+  <div class="login-item">
+    <form class="login-form" novalidate [formGroup]="authCredentialsDto" (ngSubmit)="userLogin()">
+      <p class="login-content">
+        <label class="login-label" for="login">Username or email address<span>*</span></label>
+        <input class="login-input" formControlName="login"  id="login"
+               name="login" type="text" required>
+      </p>
+      <p class="login-content">
+        <label class="login-label" for="password">Password<span>*</span></label>
+        <input class="login-input" formControlName="password"  id="password"
+               name="password" type="password" required>
+      </p>
+      <div class="login-checkbox">
+        <input type="checkbox" id="remember" name="remember">
+        <label class="ml-1" for="remember">Remember me</label>
+      </div>
+      <div class="login-submit">
+        <button type="submit" [disabled]="!authCredentialsDto.valid"
+                class="login-submit-button">
           Login
-        </h3>
+        </button>
       </div>
-      <div class="card-body">
-        <form class="form" novalidate [formGroup]="authCredentialsDto" (ngSubmit)="userLogin()">
-          <p>
-            <mat-form-field appearance="fill" style="width: 100%">
-              <mat-label>User Name</mat-label>
-              <input formControlName="username" matInput id="username" name="username" type="text" required>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field appearance="outline" style="width: 100%">
-              <mat-label>Password</mat-label>
-              <input formControlName="password"
-                     matInput id="password"
-                     name="password" type="password" required>
-            </mat-form-field>
-          </p>
-          <div class="row justify-content-end">
-            <button type="submit" [disabled]="!authCredentialsDto.valid"
-                    class="btn btn-outline-success pull-right float-right">
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+      <p class="login-forgot">
+        <a routerLink="/">Lost your password?</a>
+      </p>
+    </form>
   </div>
 </div>
 
@@ -52,3 +49,5 @@
     </button>
   </div>
 </ng-template>
+
+

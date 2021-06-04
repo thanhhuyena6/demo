@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders } from "@angular/common/http";
 import {Router} from "@angular/router";
 import {ErrorHandler} from "../../shared/error-handler";
-import {Observable} from "rxjs";
+import {Observable, BehaviorSubject} from "rxjs";
 import {User} from "../../model/user";
 import {Profile} from "../../model/profile";
 import {Cart} from "../../model/cart";
@@ -11,7 +11,7 @@ import {UserData} from "../../model/user-data";
 import {Order} from "../../model/order";
 import {Invoice} from "../../model/invoice";
 import {Payment} from "../../model/payment";
-// import {CartService} from "../cart/cart.service";
+import {CartService} from "../cart/cart.service";
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +23,10 @@ export class AuthService {
     // private cartService: CartService
   ) {
   }
-  _registerUrl = `https://gumistore.herokuapp.com/api/public/register`;
-  _loginUrl = `https://gumistore.herokuapp.com/api/public/login`;
+  private authenSubject = new BehaviorSubject(false);
+  authen = this.authenSubject.asObservable();
+  _registerUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/register`;
+  _loginUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/login`;
   _userUrl = `https://gumistore.herokuapp.com/api/public/profile`;
   _profileUrl = `https://gumistore.herokuapp.com/api/public/profile`;
   private _usersURL = `http://localhost:3000/auth/system-users`;
@@ -41,8 +43,16 @@ export class AuthService {
   public profile: Profile;
   public currentUser: User;
 
+  isAuthen(isAuthen: boolean) {
+    this.authenSubject.next(isAuthen);
+  }
+
   registerUser(registrationInfo: any): Observable<void> {
     return this.http.post<void>(this._registerUrl, registrationInfo);
+  }
+
+  login(user: any): Observable<any> {
+    return this.http.post<any>(this._loginUrl, user);
   }
 
 
@@ -86,7 +96,8 @@ export class AuthService {
   // }
 
   getCurrentUser(): Observable<User> {
-    return this.http.get<User>(`${this._userUrl}`);
+    const urlUserById = `${this._userUrl}`;
+    return this.http.get<User>(urlUserById);
   }
 
   getSystemUsers(): Observable<User[]> {
@@ -105,9 +116,7 @@ export class AuthService {
     return this.http.get<User[]>(this._usersURL);
   }
 
-  login(user: any): Observable<any> {
-    return this.http.post<any>(this._loginUrl, user);
-  }
+
 
 
   getUserProfile(): Observable<Profile> {

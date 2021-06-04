@@ -3,15 +3,18 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Category} from "../../model/category";
 import {Product} from "../../model/product";
+import {SubCategory} from "../../model/sub-category";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  private categoryUrl = `http://localhost:3000/categories`;
-  // private categoryUrl = `http://localhost:3001/data_category`;
-  private productUrl = `http://localhost:3001/data_category`;
-  constructor(private http: HttpClient) { }
+  private categoryUrl = `http://localhost:3001/categories`;
+  private subCategoryUrl = `http://localhost:3004/sub_category`;
+  private productUrl = `http://localhost:3002/data_category`;
+  constructor(private http: HttpClient,
+              private router: Router) { }
   getCategories(): Observable<Category[]>{
     return this.http.get<Category[]>(this.categoryUrl);
 
@@ -20,9 +23,22 @@ export class CategoryService {
   //   const urlOfCategory = `${this.categoryUrl}/${id}`
   //   return this.http.get<Category>(urlOfCategory);
   // }
+
+  getSubCategoryById(id : any): Observable<Category>{
+    const urlOfSubCategory = `${this.subCategoryUrl}/${id}`
+    return this.http.get<Category>(urlOfSubCategory);
+  }
   getCategoryById(id : any): Observable<Product>{
     const urlOfProduct = `${this.productUrl}/${id}`
     return this.http.get<Product>(urlOfProduct);
+  }
+
+  viewSubCategoryDetails(subCategory: SubCategory) {
+    this.router.navigate(['subcategory', subCategory.id], {
+      // queryParams: {
+      //   Name: subCategory.name,
+      // }
+    })
   }
 
   // createCategory(createCategoryDto: any):Observable<Category>{

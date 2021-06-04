@@ -36,6 +36,9 @@ import {FileModule} from "./shared/file/file.module";
 // import {TokenInterceptorService} from "./services/auth/token-interceptor.service";
 // import {ErrorInterceptorService} from "./services/auth/error-interceptor.service";
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductListSubComponent } from './components/product-list-sub/product-list-sub.component';
+import { AuthComponent } from './components/auth/auth/auth.component';
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 
 @NgModule({
@@ -60,6 +63,9 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     PageNotFoundComponent,
     ResourceNotFoundComponent,
     ProductDetailsComponent,
+    ProductListSubComponent,
+    AuthComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

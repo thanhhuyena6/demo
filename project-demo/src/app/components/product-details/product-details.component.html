@@ -33,10 +33,10 @@
     <form class="product-cart">
       <div class="product-quantity">
         <input type="button" value="-" class="minus button is-form">
-        <input type="number" value="1" class="input-text qty text" step="1" name="quantity">
+        <input type="number" [value]=[count] class="input-text qty text" step="1" name="quantity">
         <input type="button" value="+" class="plus button is-form">
       </div>
-      <button class="cart-button">
+      <button (click)="pushToCart(product)" class="cart-button">
         Add to cart
       </button>
     </form>

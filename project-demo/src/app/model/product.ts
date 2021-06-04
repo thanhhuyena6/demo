@@ -1,6 +1,8 @@
 import {Images} from "./images";
 import {SubCategory} from "./sub-category";
 import {Category} from "./category";
+import {CartItem} from "./cart-item";
+import {OrderItem} from "./order-item";
 
 export class Product {
   id:number;
@@ -16,5 +18,8 @@ export class Product {
   category_id: string;
   product: Product;
   categories: Category;
-
+  addedToCart: boolean;
+  cartQuantity: number;
+  cartItem: CartItem;
+  order_items: OrderItem[];
 }
