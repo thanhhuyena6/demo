@@ -13,7 +13,7 @@
         </mat-expansion-panel-header>
         <mat-panel-title
           style="cursor: pointer; margin-bottom: 5px"
-          (click)="viewCategoryDetails(category)"
+          (click)="viewSubCategoryDetails(subcategory)"
           *ngFor="let subcategory of category.subcategory">
           {{subcategory.name}}
         </mat-panel-title>
@@ -27,7 +27,7 @@
         <div class="col-md-4 category-item"*ngFor="let category of categories">
           <div class="category-content">
             <img  [src]="category.image_url">
-            <div class="category-content-title">
+            <div class="category-content-title" (click)="viewCategoryDetails(category)">
               <h5>{{category.name}}</h5>
               <p>{{category.products_count}} <span>PRODUCT</span></p>
             </div>

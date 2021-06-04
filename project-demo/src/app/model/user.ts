@@ -12,4 +12,5 @@ export class User {
   orders: Order[];
   invoices: Invoice[];
   payments: Payment[];
+
 }

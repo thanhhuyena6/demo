@@ -16,7 +16,6 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   category: Category;
   item: Product;
-  subcategory: SubCategory;
   constructor(private route: ActivatedRoute,
               private authService: AuthService,
               private productService: ProductService,
@@ -26,7 +25,6 @@ export class ProductListComponent implements OnInit {
       if (params.get('id')){
         this.productService.getProductById(params.get('id'))
           .subscribe(res => {
-            console.log(res)
             this.item = res
           })
       } else {
@@ -35,7 +33,7 @@ export class ProductListComponent implements OnInit {
     })
     if (route.snapshot.data.products) {
       this.products = route.snapshot.data.products;
-      console.log(this.products)
+      // console.log(this.products)
     }
   }
 

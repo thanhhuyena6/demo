@@ -4,4 +4,5 @@ export  class Cart {
   id: number;
   profile: Profile;
   cartItemId: number;
+  quantity: number;
 }

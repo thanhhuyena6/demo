@@ -11,8 +11,8 @@ import {AuthService} from "../auth/auth.service";
   providedIn: 'root'
 })
 export class ProductService {
-  private url = `http://localhost:3001/data_category`;
-  private urlDetail = `http://localhost:3002/product`;
+  private url = `http://localhost:3002/data_category`;
+  private urlDetail = `http://localhost:3003/product`;
 
   constructor(private  http: HttpClient, private authService: AuthService,
               private router: Router) { }
@@ -48,9 +48,9 @@ export class ProductService {
 
   viewProductDetails(product: Product){
     this.router.navigate(['products', product.id], {
-      queryParams: {
-        Name: product.name
-      }
+      // queryParams: {
+      //   Name: product.name
+      // }
     })
   }
 }

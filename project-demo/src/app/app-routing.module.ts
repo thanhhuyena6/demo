@@ -11,11 +11,12 @@ import {RegisterComponent} from "./components/auth/register/register.component";
 import {ProductListComponent} from "./components/product-list/product-list.component";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {CategoryListComponent} from "./components/category-list/category-list.component";
-import {CategoryDetailsComponent} from "./components/category-details/category-details.component";
 import {UserAuthGuard} from "./guards/user-auth.guard";
 import {CategoryResolverService} from "./resolvers/category-resolver.service";
 import {ProductResolverService} from "./resolvers/product-resolver.service";
-// import {ProfileResolverService} from "./resolvers/profile-resolver.service";
+import {ProfileResolverService} from "./resolvers/profile-resolver.service";
+import {ProductListSubComponent} from "./components/product-list-sub/product-list-sub.component";
+import {CartResolverService} from "./resolvers/cart-resolver.service";
 
 const routes: Routes = [
   // {
@@ -24,17 +25,25 @@ const routes: Routes = [
   //   data: {breadcrumbs: 'Home'}
   // },
   {
+    path : '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path : 'profile',
     component: ProfileComponent,
-    // resolve: {
-    //   profile: ProfileResolverService
-    // }
+    resolve: {
+      profile: ProfileResolverService
+    },
     canActivate: [UserAuthGuard]
   },
   {
     path : 'orders',
     component: OrdersComponent,
-    canActivate: [UserAuthGuard]
+    canActivate: [UserAuthGuard],
+    resolve: {
+      cart: CartResolverService
+    }
   },
   {
     path : 'cart',
@@ -44,19 +53,19 @@ const routes: Routes = [
     // }
     canActivate: [UserAuthGuard]
   },
-  {
-    path : 'auth',
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'register',
-        component: RegisterComponent
-      }
-    ]
-  },
+  // {
+  //   path : 'auth',
+  //   children: [
+  //     {
+  //       path: 'login',
+  //       component: LoginComponent
+  //     },
+  //     {
+  //       path: 'register',
+  //       component: RegisterComponent
+  //     }
+  //   ]
+  // },
   {
     path : 'products',
     component: ProductListComponent,
@@ -91,10 +100,10 @@ const routes: Routes = [
     }
   },
   {
-    path : '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path : 'subcategory/:id',
+    component: ProductListSubComponent,
   },
+
   {
     path: 'admin', // this is the prefix route
     canActivate: [UserAuthGuard],

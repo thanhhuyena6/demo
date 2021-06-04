@@ -5,4 +5,5 @@ export class SubCategory {
   name: string;
   description: string;
   products: Product[];
+  image_url: string;
 }
