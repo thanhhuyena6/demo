@@ -11,8 +11,8 @@ import {AuthService} from "../auth/auth.service";
   providedIn: 'root'
 })
 export class ProductService {
-  private url = `http://localhost:3002/data_category`;
-  private urlDetail = `http://localhost:3003/product`;
+  private url = `http://project-demo-gumi.herokuapp.com/api/home/data_category`;
+  private urlDetail = `https://project-demo-gumi.herokuapp.com/api/home/product/index`;
 
   constructor(private  http: HttpClient, private authService: AuthService,
               private router: Router) { }

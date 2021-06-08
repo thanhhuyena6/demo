@@ -23,9 +23,9 @@ export class CategoryDetailsComponent implements OnInit {
     route.paramMap.subscribe((params:ParamMap) => {
       if (params.get('id')){
         this.categoryService.getCategoryById(params.get('id'))
-          .subscribe(res => {
+          .subscribe((res:any) => {
             console.log(res)
-            this.products = res
+            this.products = res.data
           })
       } else {
         router.navigate(['/home'])

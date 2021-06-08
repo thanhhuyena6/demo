@@ -6,12 +6,12 @@
     <form class="login-form" novalidate [formGroup]="authCredentialsDto" (ngSubmit)="userLogin()">
       <p class="login-content">
         <label class="login-label" for="login">Username or email address<span>*</span></label>
-        <input class="login-input" formControlName="login"  id="login"
+        <input class="login-input" formControlName="login" id="login"
                name="login" type="text" required>
       </p>
       <p class="login-content">
         <label class="login-label" for="password">Password<span>*</span></label>
-        <input class="login-input" formControlName="password"  id="password"
+        <input class="login-input" formControlName="password" id="password"
                name="password" type="password" required>
       </p>
       <div class="login-checkbox">

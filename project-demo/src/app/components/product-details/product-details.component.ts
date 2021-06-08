@@ -5,6 +5,8 @@ import {Product} from "../../model/product";
 import {Images} from "../../model/images";
 import {element} from "protractor";
 import {MatSidenav} from "@angular/material/sidenav";
+import {log} from "util";
+import {CommonService} from "../../services/common.service";
 
 
 @Component({
@@ -19,12 +21,16 @@ export class ProductDetailsComponent implements OnInit {
   product: Product;
   images: Images[];
   count: number;
+  quantity: any;
   items: any;
+  value: number = 0;
+  valueCart: number = 0;
   itemsInCart: any = [];
-  yesArray: any;
+  quantity_order:number;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private common: CommonService,
               private productService: ProductService) {
     // route.paramMap.subscribe((params: ParamMap) => {
     //   if (params.get('productId')){
@@ -38,9 +44,9 @@ export class ProductDetailsComponent implements OnInit {
     route.paramMap.subscribe((params: ParamMap) => {
       if (params.get('id')) {
         this.productService.getProductDetailById(params.get('id'))
-          .subscribe(resProduct => {
-            // console.log(resProduct);
-            this.product = resProduct;
+          .subscribe((resProduct:any) => {
+            console.log(resProduct.data);
+            this.product = resProduct.data[0];
           })
       }
     })
@@ -55,81 +61,82 @@ export class ProductDetailsComponent implements OnInit {
     // nextArrow: '<button class="btn-next" (click)="next()"></button>\n',
     // prevArrow: '<button class="btn-prev" (click)="prev()">prev</button>\n',
     arrows: true,
+    focusOnSelect: true,
   };
 
   ngOnInit(): void {
     this.arrayCart = localStorage.getItem('arrayCart');
     this.arrayCartParse = JSON.parse(this.arrayCart);
 
-    // this.yesArray = [];
-    // localStorage.setItem('yesArray', JSON.stringify(this.yesArray));
-    // this.yesArray = localStorage.getItem('yesArray');
-    // this.yesArray = JSON.parse(this.yesArray);
-    // this.yesArray.push('yes');
-    // this.yesArray.push('yesArray');
-    // localStorage.setItem('yesArray', JSON.stringify(this.yesArray));
-    // this.yesArray = localStorage.getItem('yesArray')
-    // JSON.parse(this.yesArray);
   }
 
 
+  minus(){
+    if (this.value >= 0) {
+       this.itemsInCart.map((element: any) => {
+         if (element.product.id === this.items.product.id){
+           element.quantity_order -= 1;
+           element.subtotal = element.quantity_order * element.product.price;
+         }
+       })
+      }
+    this.itemsInCart.forEach((element: any) => {
+      this.value = element.quantity_order
+    })
+    localStorage.setItem('arrayCart', JSON.stringify(this.itemsInCart));
+  }
+
+
+
+  pushTotalCart(item: any){
+    localStorage.setItem('arrayCart', JSON.stringify(this.itemsInCart));
+    console.log(this.itemsInCart)
+    this.itemsInCart.map((element:any) => {
+        this.valueCart = element.quantity_order
+    })
+    this.quantity = {
+      product: item,
+      quantity_order: this.valueCart,
+    }
+
+    this.common.cartNumber.next(this.valueCart);
+  }
   pushToCart(item: any) {
-    let local_storage = [];
+    this.arrayCart = localStorage.getItem('arrayCart');
+    this.itemsInCart = JSON.parse(this.arrayCart);
     this.items = {
       product: item,
-      quantity: 1,
+      quantity_order: 1,
+      subtotal: item.price,
     }
-    if (this.arrayCart.value == null) {
-      local_storage = [];
-      this.itemsInCart = []
-      console.log('local storage null', this.arrayCart);
+    let isInCart;
+      isInCart = this.itemsInCart.some((element:any) =>
+      element.product.id === this.items.product.id);
+    if (isInCart){
+      this.itemsInCart.map ((element:any) => {
+        if (element.product.id === this.items.product.id){
+          element.quantity_order += this.items.quantity_order
+          element.subtotal = element.quantity_order * element.product.price;
+        }
+        console.log('quantity', element.quantity_order)
+        return element;
+      })
+    } else {
       this.itemsInCart.push(this.items);
-      localStorage.setItem('arrayCart', JSON.stringify(this.itemsInCart));
-      console.log('push first item', this.itemsInCart)
     }
-    this.arrayCart = localStorage.getItem('arrayCart');
-    this.arrayCartParse = JSON.parse(this.arrayCart);
-    local_storage = this.arrayCartParse;
-    console.log('local storage has items', local_storage)
-    for (let i = 0 ; i < local_storage.length; i++) {
-      console.log(local_storage[i].product.id)
-      console.log(this.items.product.id)
-      console.log(local_storage.length)
-      if (this.items.product.id === local_storage[i].product.id) {
-        local_storage[i].quantity += 1;
-        console.log("Quantity for " + i + " : " + local_storage[i].quantity);
-        console.log('same product! index is ', i);
-        // this.items = null;
-        console.log('items', this.items)
-        break;
-      }
-      // this.itemsInCart.push(this.items);
-    }
-    // if (this.items) {
-    //   console.log('items', this.items)
-    //   this.itemsInCart.push(this.items);
-    // }
-    // local_storage.forEach((item: any) => {
-    //   this.itemsInCart.push(item);
-    // })
-    // localStorage.setItem('arrayCart', JSON.stringify(this.itemsInCart));
+    console.log('items in cart', this.itemsInCart)
+    this.itemsInCart.forEach((element:any) => {
+      this.value = element.quantity_order;
+      console.log(this.value)
+    })
+
+    localStorage.setItem('arrayCart', JSON.stringify(this.itemsInCart));
+
+
 
   }
 
-  // let i : number = 1;
-  // this.arrayCart.forEach((element: any) => {
-  //   console.log(element.id)
-  //   if (element.id === item.id){
-  //       i += 1;
-  //   } else {
-  //     this.arrayCart.push(item);
-  //   }
-  //   console.log('element id :' + element.id)
-  //   console.log('item id :' + item.id)
-  // })
-  // console.log('length array cart : ', this.arrayCart.length)
-  // this.count  = i;
-  // console.log('count', this.count)
+
 
   getItems() {
     return this.arrayCart;

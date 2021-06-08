@@ -12,6 +12,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Product} from "../../model/product";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {element} from "protractor";
 
 @Component({
   selector: 'app-cart',
@@ -19,27 +20,14 @@ import {MatSort} from "@angular/material/sort";
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cart: Cart;
-  cartItem: CartItem;
-  modalRef: BsModalRef;
-  dataSource: MatTableDataSource<Product[]>;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  displayedColumns: string[] = [
-    'Number',
-    'Name',
-    'Price',
-    'Quantity',
-    'Actions'
-  ];
-  checkoutDto: FormGroup;
-  selectedPaymentMethod = "";
-  paymentMethods: string[] = [
-    'VISA',
-    'PAYPAL',
-    'CASH_ON_DELIVERY',
-    'MASTERCARD'
-  ];
+  itemsInCart: any = [];
+  arrayCart: any;
+  arrayCartParse: any;
+  value: any;
+  items: any;
+  total: number = 0;
+  changes: any = [];
+
 
   constructor(private cartService: CartService,
               private authService: AuthService,
@@ -49,83 +37,43 @@ export class CartComponent implements OnInit {
               private snackBar: MatSnackBar,
               private modalService: BsModalService,
               private router: Router) {
-    this.prepareCartData()
+
   }
 
   ngOnInit(): void {
-    // this.checkoutDto = this.fb.group({
-    //   createPaymentDto: this.fb.group({
-    //     payment_method: new FormControl(null, Validators.required)
-    //   }),
-    //   createOrderDto: this.fb.group({
-    //     comments: new FormControl(null, Validators.required)
-    //   })
-    // })
-
-    // this.prepareCartData()
+    this.handleCart();
+    this.getChange()
   }
 
-  prepareCartData() {
-    if (this.authService.isLoggedIn()) {
-
-    }
-  }
-
-  refreshCartData() {
-    if (this.authService.cartItem) {
-      this.cartService.getCartItem(this.authService.cartItem.id)
-        .subscribe((res:any) => {
-          this.cartItem = res ;
-        })
-    }
-  }
-
-  openDialog(template: TemplateRef<any>){
-    this.dialog.open(template);
-  }
-
-  hideDialog(){
-    this.dialog.closeAll();
-  }
-
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template)
-  }
-
-  hideModal() {
-    this.modalRef.hide();
-  }
-
-  openSnackBar(message: string, action: string){
-    this.snackBar.open(message, action, {
-      duration: 2000
+  getChange(){
+    this.itemsInCart.forEach((element:any) => {
+      console.log(element)
     })
   }
 
-  removeFromCart(productId: number){
-    const array = this.cartItem.products;
-    this.cartService.removeFromCart(this.cartItem.id, productId)
-      .subscribe((res:any)=> {
-        this.cartItem = res;
-        this.openSnackBar('product removed successfully', 'OK');
-      }, (error: Error) => {
-        this.openSnackBar(`An error has occurred ${error.message}`,'OK')
-      })
+  handleCart(){
+    this.arrayCart = localStorage.getItem('arrayCart');
+    this.itemsInCart = JSON.parse(this.arrayCart);
+    this.itemsInCart.forEach((element:any) => {
+      console.log(element)
+      this.total += element.subtotal
+    })
   }
 
-  completeCheckout(){
-    this.cartService.checkout(this.cartItem.id, this.checkoutDto.value)
-      .subscribe((res:any) => {
-        this.openSnackBar('order created successfully', 'OK')
-        this.router.navigate(['/orders'], {
-          queryParams: {
-            NewOrder: true
-          }
-        })
-      },(error: Error) => {
-        this.openSnackBar(`An error has occurred ${error.message}`,'OK')
-      })
+  delete(item : any){
+    this.itemsInCart.splice(this.itemsInCart.indexOf(item),1)
+    // this.value = 0;
+    localStorage.setItem('arrayCart', JSON.stringify(this.itemsInCart));
   }
+
+  minus(){
+    console.log(this.itemsInCart)
+  }
+  pushToCart(item: any) {
+    console.log(this.itemsInCart)
+
+  }
+
 
 
 }

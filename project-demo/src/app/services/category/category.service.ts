@@ -10,9 +10,9 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class CategoryService {
-  private categoryUrl = `http://localhost:3001/categories`;
-  private subCategoryUrl = `http://localhost:3004/sub_category`;
-  private productUrl = `http://localhost:3002/data_category`;
+  private categoryUrl = `https://project-demo-gumi.herokuapp.com/api/home/category/index`; //https://project-demo-gumi.herokuapp.com/api/home/category/index
+  private subCategoryUrl = `http://project-demo-gumi.herokuapp.com/api/home/sub_category`;
+  private productUrl = `http://project-demo-gumi.herokuapp.com/api/home/data_category`;
   constructor(private http: HttpClient,
               private router: Router) { }
   getCategories(): Observable<Category[]>{
@@ -31,6 +31,14 @@ export class CategoryService {
   getCategoryById(id : any): Observable<Product>{
     const urlOfProduct = `${this.productUrl}/${id}`
     return this.http.get<Product>(urlOfProduct);
+  }
+
+  viewCategoryDetails(category: Category) {
+    this.router.navigate(['categories', category.id], {
+      // queryParams: {
+      //   Name: category.name,
+      // }
+    })
   }
 
   viewSubCategoryDetails(subCategory: SubCategory) {

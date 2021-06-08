@@ -1,0 +1,27 @@
+<div *ngIf="itemsInCart.length > 0">
+  <div class="item-details row" *ngFor="let item of itemsInCart">
+    <div class="col-lg-3 item-details-img" >
+      <img src="{{item.product.images[0].image_url}}" style="width: 100px; height: 200px">
+    </div>
+    <div class="col-lg-3 item-details-name">
+      {{item.product.name}}
+    </div>
+    <div class="col-lg-2 item-details-price">
+      ${{item.product.price}}
+    </div>
+    <div class="col-lg-2 item-details-quantity">
+      <div class="product-quantity">
+        <input type="button" (click)="minus()" value="-" class="minus button is-form">
+        <input type="number" value="{{item.quantity_order}}" class="input-text qty text" step="1" name="quantity">
+        <input type="button" (click)="pushToCart(item)" value="+" class="plus button is-form">
+      </div>
+    </div>
+    <div class="col-lg-2 item-details-price">
+      ${{item.subtotal}}
+    </div>
+    <div (click)="delete(item)">&times;</div>
+
+  </div>
+</div>
+<div><h3>${{total}}</h3></div>
+<button routerLink="/checkout">PROCESS TO CHECKOUT</button>

@@ -24,7 +24,7 @@
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
-<div class="row" *ngIf="item">
+<div class="row" *ngIf="item" style="padding-top: 60px">
   <div class=" col-md-4 product-list" *ngFor="let products of item.products">
     <h3>{{item.name}}</h3>
     <div class="card">
@@ -37,7 +37,7 @@
       </div>
       <div class="card-footer">
         <div class="row justify-content-center">
-          <button (click)="viewProductDetails(products)" class="btn btn-outline-info">
+          <button   (click)="viewProductDetails(products)" class="btn btn-outline-info">
             QUICK VIEW
           </button>
 <!--          <button class="btn btn-outline-primary">-->

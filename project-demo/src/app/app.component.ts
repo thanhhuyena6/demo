@@ -6,6 +6,9 @@ import {Product} from "./model/product";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {MatSidenav} from "@angular/material/sidenav";
 import {filter} from "rxjs/operators";
+import {ProductListComponent} from "./components/product-list/product-list.component";
+import {ProductService} from "./services/product/product.service";
+import {CommonService} from "./services/common.service";
 
 
 @Component({
@@ -13,7 +16,7 @@ import {filter} from "rxjs/operators";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
   opened: boolean = true;
@@ -23,39 +26,35 @@ export class AppComponent implements OnInit{
   currentRoute: any;
   product: Product;
   link: any;
+  panelOpenState: any;
+  productList: ProductListComponent;
 
   constructor(public authService: AuthService,
               private router: Router,
+              private common: CommonService,
               private route: ActivatedRoute,
+              private productService: ProductService,
               private categoryService: CategoryService) {
 
-    authService.prepareUserData();
+    // authService.prepareUserData();
     // authService.refreshInfo();
     this.prepareCategories();
-    this.router.events.pipe(filter((event:any) => event instanceof NavigationEnd))
-      .subscribe(event =>
-      {
+    this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
+      .subscribe(event => {
         this.currentRoute = event.url;
         console.log(this.currentRoute)
-       if (this.currentRoute){
-         console.log('abc')
-           // this.opened = false;
-       }
+        if (this.currentRoute === '/home'){
+            this.opened = true;
+        }
       });
   }
 
 
   ngOnInit(): void {
-    this.authService.prepareUserData();
-    // this.authService.refreshInfo();
     this.prepareCategories();
-    // this.link = this.viewProductDetails(this.product);{
-    //   this.router.navigate(['products', this.product.id], {
-    //     // queryParams: {
-    //     //   Name: product.name
-    //     // }
-    //   })
-    // }
+    this.common.toggleSideNav.subscribe((toggle: any) => {
+      this.opened = toggle;
+    })
   }
 
   // viewProductDetails(product: Product){
@@ -67,18 +66,19 @@ export class AppComponent implements OnInit{
   // }
 
 
-
   prepareCategories() {
     this.categoryService.getCategories()
       .subscribe((resData: any) => {
-        // console.log(resData)
-        // console.log(resData.data)
-        this.categories = resData;
+        console.log(resData.data)
+        this.categories = resData.data;
+        console.log(this.categories)
+
       })
   }
 
-  styleCategories(){
+  styleCategories() {
     this.toggle.style.position = 'relative';
   }
+
 
 }
