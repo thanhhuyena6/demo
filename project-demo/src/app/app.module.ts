@@ -39,6 +39,9 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ProductListSubComponent } from './components/product-list-sub/product-list-sub.component';
 import { AuthComponent } from './components/auth/auth/auth.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
+import { NavComponent } from './components/nav/nav.component';
+import { AccountDetailsComponent } from './components/profile/account-details/account-details.component';
+import { AddressComponent } from './components/profile/address/address.component';
 
 
 @NgModule({
@@ -66,6 +69,9 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     ProductListSubComponent,
     AuthComponent,
     DialogComponent,
+    NavComponent,
+    AccountDetailsComponent,
+    AddressComponent,
   ],
   imports: [
     BrowserModule,

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       res => {
         console.log(res)
         localStorage.setItem('token', res.access_token);
-        this.authService.prepareUserData();
+        // this.authService.prepareUserData();
         this.messageError = '';
         this.dialogRef.close('success');
         this.router.navigate([`/home`]);

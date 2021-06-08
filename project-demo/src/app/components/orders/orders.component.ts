@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-
+  itemsInCart: any = [];
+  arrayCart: any;
   constructor() { }
 
   ngOnInit(): void {
+    // this.arrayCart = localStorage.getItem('arrayCart');
+    // this.itemsInCart = JSON.parse(this.arrayCart);
+    // console.log(this.arrayCart)
   }
 
 }

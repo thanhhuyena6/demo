@@ -1,3 +1,39 @@
-table {
-  width: 100%;
+.product-quantity {
+  display: flex;
+  margin-right: 20px;
+
+  .button.minus {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .is-form, input[type='button'].is-form {
+    overflow: hidden;
+    position: relative;
+    background-color: #f9f9f9;
+    text-shadow: 1px 1px 1px #fff;
+    color: #666;
+    border: 1px solid #ddd;
+    text-transform: none;
+    font-weight: normal;
+    padding: 0 7px;
+  }
+
+  input[type="number"] {
+    max-width: 40px;
+    width: 40px;
+    text-align: center;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    margin: 0;
+    font-size: 16px;
+    -moz-appearance: textfield;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }

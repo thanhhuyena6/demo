@@ -27,20 +27,25 @@ export class AuthService {
   authen = this.authenSubject.asObservable();
   _registerUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/register`;
   _loginUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/login`;
-  _userUrl = `https://gumistore.herokuapp.com/api/public/profile`;
-  _profileUrl = `https://gumistore.herokuapp.com/api/public/profile`;
+  _logoutUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/logout`;
+  _profileUrl = `http://project-demo-gumi.herokuapp.com/api/home/user/show`;
+  _updateUrl = `http://project-demo-gumi.herokuapp.com/api/home/user/update`
+  _checkoutUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/checkout`
+  _cartOrderUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/cart/order`;
   private _usersURL = `http://localhost:3000/auth/system-users`;
-  private _userDataURL = `https://gumistore.herokuapp.com/api/public/profile`;
+  // private _userDataURL = `http://localhost:3000/auth/profile`;
 
   private imageChangeUrl = `http://localhost:3000/profile/userprofile/changeprofileimage`;
   private newImageUrl = `http://localhost:3000/profile/userprofile/setprofileimage`;
   private contactUrl = `http://localhost:3000/contacts/new-mail`;
-  private _usersUrl = 'http://localhost:3000/auth/system-users';
+  // private _usersUrl = 'http://localhost:3000/auth/system-users';
   errorsHandler = new ErrorHandler();
   public username: string;
   public cart: Cart;
   public cartItem: CartItem;
   public profile: Profile;
+  // token: any;
+  // getProfile: any;
   public currentUser: User;
 
   isAuthen(isAuthen: boolean) {
@@ -50,24 +55,75 @@ export class AuthService {
   registerUser(registrationInfo: any): Observable<void> {
     return this.http.post<void>(this._registerUrl, registrationInfo);
   }
+  order(checkoutInfo:any): Observable<void>{
+    return this.http.post<void>(this._cartOrderUrl, checkoutInfo);
+  }
+
+  checkoutProduct(info: any) : Observable<void>{
+    return this.http.post<void>(this._checkoutUrl, info)
+  }
 
   login(user: any): Observable<any> {
     return this.http.post<any>(this._loginUrl, user);
   }
 
+  getUserProfile(): Observable<Profile> {
+    return this.http.get<Profile>(this._profileUrl);
+  }
 
-  prepareUserData() {
-    if (this.isLoggedIn()) {
-      this.getCurrentUser().subscribe(resUser => {
-        this.currentUser = resUser;
-      });
-      this.pUserData().subscribe(uData => {
-        this.profile = uData.profile;
-        this.username = `${uData.profile.firstname}
-        ${uData.profile.lastname}`;
+  getTokenProfile() {
+    let authHeader;
+    const profile = localStorage.getItem('token');
+    // const getProfile:any = JSON.parse(profile)
+    // this.token = JSON.parse(this.token);
+    console.log(profile)
+    if (profile) {
+      const token = `Bearer ${profile}`;
+      authHeader = new HttpHeaders({
+        Authorization: token,
       });
     }
+    console.log(authHeader)
+    return authHeader;
   }
+
+  logout() {
+    return this.http.get(`${this._logoutUrl}`);
+  }
+
+  getProfile() {
+    return this.http.get(`${this._profileUrl}`, { headers: this.getTokenProfile()});
+  }
+
+  updateProfile(body: any) {
+    return this.http.put(`${this._updateUrl}`, body, {
+      headers: this.getTokenProfile(),
+    });
+  }
+  updatePass(body: any) {
+    return this.http.put(`${this._updateUrl}/changepass`, body, {
+      headers: this.getTokenProfile(),
+    });
+  }
+  updateAddress(body: any) {
+    return this.http.put(`${this._profileUrl}/changeaddress`, body, {
+      headers: this.getTokenProfile(),
+    });
+  }
+
+
+  // prepareUserData() {
+  //   if (this.isLoggedIn()) {
+  //     this.getCurrentUser().subscribe(resUser => {
+  //       this.currentUser = resUser;
+  //     });
+  //     this.pUserData().subscribe(uData => {
+  //       this.profile = uData.profile;
+  //       this.username = `${uData.profile.firstname}
+  //       ${uData.profile.lastname}`;
+  //     });
+  //   }
+  // }
 
   // refreshInfo() {
   //   if (this.isLoggedIn()) {
@@ -79,10 +135,10 @@ export class AuthService {
   //   }
   // }
 
-  pUserData(): Observable<UserData> {
-
-    return this.http.get<UserData>(this._userDataURL);
-  }
+  // pUserData(): Observable<UserData> {
+  //
+  //   return this.http.get<UserData>(this._userDataURL);
+  // }
 
   messageContact(messageForm: any): Observable<void> {
     return this.http.post<void>(this.contactUrl, messageForm);
@@ -95,14 +151,14 @@ export class AuthService {
   //   );
   // }
 
-  getCurrentUser(): Observable<User> {
-    const urlUserById = `${this._userUrl}`;
-    return this.http.get<User>(urlUserById);
-  }
-
-  getSystemUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this._usersUrl);
-  }
+  // getCurrentUser(): Observable<User> {
+  //   const urlUserById = `${this._userUrl}`;
+  //   return this.http.get<User>(urlUserById);
+  // }
+  //
+  // getSystemUsers(): Observable<User[]> {
+  //   return this.http.get<User[]>(this._usersUrl);
+  // }
 
   // changeProfileImage(imageForm): Observable<Profile> {
   //   return this.http.patch<Profile>(this.imageChangeUrl, imageForm);
@@ -119,9 +175,7 @@ export class AuthService {
 
 
 
-  getUserProfile(): Observable<Profile> {
-    return this.http.get<Profile>(this._profileUrl);
-  }
+
 
   userLogout() {
     this.router.navigate(["/auth/login"]);

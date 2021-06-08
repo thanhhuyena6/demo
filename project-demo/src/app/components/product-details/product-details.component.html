@@ -1,10 +1,10 @@
-<div class="row product-details" style="margin: 8px" *ngIf="product">
+<div class="row product-details" style="margin: 8px; padding-top: 60px" *ngIf="product">
   <div class="col-md-6 product-details-item">
     <ngx-slick-carousel class="carousel"
                         #slickModal="slick-carousel"
                         [config]="slideConfig">
-      <div ngxSlickItem *ngFor="let images of product.images" class="slide">
-        <img src="{{ images.image_url }}" alt="" width="100%">
+      <div ngxSlickItem *ngFor="let images of product.images"  class="slide">
+        <img  src="{{ images.image_url }}" alt="" width="100%">
       </div>
     </ngx-slick-carousel>
     <div class="product-details-sub row">
@@ -32,11 +32,11 @@
     </p>
     <form class="product-cart">
       <div class="product-quantity">
-        <input type="button" value="-" class="minus button is-form">
-        <input type="number" [value]=[count] class="input-text qty text" step="1" name="quantity">
-        <input type="button" value="+" class="plus button is-form">
+        <input type="button" (click)="minus()" value="-" class="minus button is-form">
+        <input type="number" value="{{value}}" class="input-text qty text" step="1" name="quantity">
+        <input type="button" (click)="pushToCart(product)" value="+" class="plus button is-form">
       </div>
-      <button (click)="pushToCart(product)" class="cart-button">
+      <button (click)="pushTotalCart(product)"  class="cart-button">
         Add to cart
       </button>
     </form>
@@ -47,7 +47,6 @@
       </a>
       <a>{{product.categories.name}}</a>
     </div>
-
 
   </div>
 

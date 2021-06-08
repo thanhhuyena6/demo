@@ -1,0 +1,154 @@
+<form
+  class="mb-5"
+  #updateDetail="ngForm"
+  (ngSubmit)="updateDetail.valid && saveProfile()"
+>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="username">First name<sup>*</sup></label>
+        <input
+          class="form-control"
+          type="text"
+          name="firstname"
+          [(ngModel)]="changes.firstname"
+          id="username"
+          autocomplete="off"
+          required
+          #firstname="ngModel"
+          [ngClass]="{
+            'is-invalid': firstname.touched && firstname.invalid
+          }"
+        />
+        <span class="invalid-feedback">First name can't be plank</span>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="lastname">Last name <sup>*</sup></label>
+        <input
+          class="form-control"
+          type="text"
+          name="lastname"
+          [(ngModel)]="changes.lastname"
+          id="lastname"
+          autocomplete="off"
+          required
+          #lastname="ngModel"
+          [ngClass]="{
+            'is-invalid': lastname.touched && lastname.invalid
+          }"
+        />
+        <span class="invalid-feedback">Last name can't be plank</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="username">Display name <sup>*</sup></label>
+        <input
+          class="form-control"
+          type="text"
+          name="username"
+          [(ngModel)]="changes.username"
+          id="username"
+          autocomplete="off"
+          required
+          value="{{this.changes.email_address}}"
+          #username="ngModel"
+          [ngClass]="{
+            'is-invalid': username.touched && username.invalid
+          }"
+        />
+        <span class="invalid-feedback">Display name can't be plank</span>
+      </div>
+      <p>
+        This will be how your name will be displayed in the account section and
+        in reviews
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="username">Email address <sup>*</sup></label>
+        <input
+          class="form-control"
+          type="email"
+          name="email"
+          [(ngModel)]="changes.email"
+          id="email"
+          autocomplete="off"
+          required
+          #email="ngModel"
+          [ngClass]="{
+            'is-invalid': email.touched && email.invalid
+          }"
+        />
+        <span class="invalid-feedback">Email adress can't be plank</span>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="saveProfile()">SAVE CHANGES</button>
+</form>
+<h2>PASSWORD CHANGE</h2>
+<mat-divider></mat-divider>
+<form #updateDetail="ngForm" (ngSubmit)="updateDetail.valid && savePass()">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="currentPassword">Current password</label>
+        <input
+          class="form-control"
+          type="password"
+          name="currentPassword"
+          [(ngModel)]="changes.currentPassword"
+          id="currentPassword"
+          autocomplete="off"
+          required
+          #currentPassword="ngModel"
+          [ngClass]="{
+            'is-invalid': currentPassword.touched && currentPassword.invalid
+          }"
+        />
+        <span class="invalid-feedback">Current password can't be plank</span>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">New password</label>
+        <input
+          class="form-control"
+          type="password"
+          name="newPassword"
+          [(ngModel)]="changes.newPassword"
+          id="newPassword"
+          autocomplete="off"
+          required
+          #newPassword="ngModel"
+          [ngClass]="{
+            'is-invalid': newPassword.touched && newPassword.invalid
+          }"
+        />
+        <span class="invalid-feedback">New password can't be plank</span>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm new password</label>
+        <input
+          class="form-control"
+          type="password"
+          name="confirmPassword"
+          [(ngModel)]="changes.confirmPassword"
+          id="confirmPassword"
+          autocomplete="off"
+          required
+          #confirmPassword="ngModel"
+          [ngClass]="{
+            'is-invalid': confirmPassword.touched && confirmPassword.invalid
+          }"
+        />
+        <span class="invalid-feedback">Confirm password can't be plank</span>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="savePass()">SAVE CHANGES</button>
+</form>

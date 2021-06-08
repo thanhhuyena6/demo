@@ -1,39 +1,54 @@
-
-<div *ngIf="inputCategories" class="mt-3">
-    <h2 class="text-center">
-      BROWSE
-    </h2>
-  <div *ngFor="let category of inputCategories">
-    <mat-accordion >
-      <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false" [hideToggle]="category.subcategory.length === 0">
-        <mat-expansion-panel-header style="max-height: 48px">
+<div *ngIf="inputCategories" class="input-category">
+  <h2>HOME/ <p>SHOP</p></h2>
+  <h3>BROWSE</h3>
+  <mat-divider class="is-divider"></mat-divider>
+  <div *ngFor="let category of inputCategories" class="input-category-content">
+    <mat-accordion>
+      <mat-expansion-panel class="input-category-item" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false" [hideToggle]="category.subcategory.length === 0">
+        <mat-expansion-panel-header style="max-height: 48px;" class="input-category-link">
           <mat-panel-title (click)="viewCategoryDetails(category)">
             {{category.name}}
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-panel-title
-          style="cursor: pointer; margin-bottom: 5px"
-          (click)="viewSubCategoryDetails(subcategory)"
-          *ngFor="let subcategory of category.subcategory">
-          {{subcategory.name}}
-        </mat-panel-title>
+        <div class="input-category-sub">
+          <mat-panel-title
+            class="input-category-sub-item"
+            style="cursor: pointer; margin-bottom: 5px"
+            (click)="viewSubCategoryDetails(subcategory)"
+            *ngFor="let subcategory of category.subcategory">
+            {{subcategory.name}}
+          </mat-panel-title>
+        </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+  <div class="filter">
+    <h3>FILTER BY</h3>
+    <mat-divider class="is-divider"></mat-divider>
+    <div class="filter-name">
+      <a href="#">Black <span>(3)</span></a>
+      <a href="#">Blue <span>(1)</span></a>
+      <a href="#">Green <span>(2)</span></a>
+    </div>
   </div>
+  <div>
+    <mat-slider aria-label="unit(s)"></mat-slider>
+  </div>
+</div>
 
 
-  <div *ngIf="categories" class="row category-list">
-        <div class="col-md-4 category-item"*ngFor="let category of categories">
-          <div class="category-content">
-            <img  [src]="category.image_url">
-            <div class="category-content-title" (click)="viewCategoryDetails(category)">
-              <h5>{{category.name}}</h5>
-              <p>{{category.products_count}} <span>PRODUCT</span></p>
-            </div>
-          </div>
-        </div>
+<div *ngIf="categories" class="row category-list">
+  <div class="col-md-4 category-item" *ngFor="let category of categories">
+    <div class="category-content">
+      <img [src]="category.image_url">
+      <div class="category-content-title" (click)="viewCategoryDetails(category)">
+        <h5>{{category.name}}</h5>
+        <p>{{category.products_count}} <span>PRODUCT</span></p>
+      </div>
+    </div>
   </div>
+</div>
 
 <!-- localhost:4200/categories/3 -->
 

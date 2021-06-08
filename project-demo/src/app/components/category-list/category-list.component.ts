@@ -26,16 +26,18 @@ export class CategoryListComponent implements OnInit {
     route.paramMap.subscribe((params: ParamMap) => {
       if (params.get('id')) {
         this.categoryService.getSubCategoryById(params.get('id'))
-          .subscribe(res => {
-            this.item = res
+          .subscribe((res:any) => {
+            console.log(res.data)
+            this.item = res.data
           })
-      } else {
-        router.navigate(['/home'])
       }
+      // else {
+      //   router.navigate(['/home'])
+      // }
     })
     if (this.route.snapshot.data.categories) {
-      // console.log(this.route.snapshot.data.categories)
-      this.categories = this.route.snapshot.data.categories;
+      console.log(this.route.snapshot.data.categories.data)
+      this.categories = this.route.snapshot.data.categories.data;
 
     }
   }
@@ -45,11 +47,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   viewCategoryDetails(category: Category) {
-    this.router.navigate(['categories', category.id], {
-      // queryParams: {
-      //   Name: category.name,
-      // }
-    })
+    this.categoryService.viewCategoryDetails(category)
   }
 
   viewSubCategoryDetails(subCategory: SubCategory) {

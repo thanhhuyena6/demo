@@ -17,6 +17,8 @@ import {ProductResolverService} from "./resolvers/product-resolver.service";
 import {ProfileResolverService} from "./resolvers/profile-resolver.service";
 import {ProductListSubComponent} from "./components/product-list-sub/product-list-sub.component";
 import {CartResolverService} from "./resolvers/cart-resolver.service";
+import {AddressComponent} from "./components/profile/address/address.component";
+import {AccountDetailsComponent} from "./components/profile/account-details/account-details.component";
 
 const routes: Routes = [
   // {
@@ -24,17 +26,29 @@ const routes: Routes = [
   //   component: HomeComponent,
   //   data: {breadcrumbs: 'Home'}
   // },
-  {
-    path : '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  // {
+  //   path : '',
+  //   redirectTo: 'home',
+  //   pathMatch: 'full'
+  // },
   {
     path : 'profile',
     component: ProfileComponent,
-    resolve: {
-      profile: ProfileResolverService
-    },
+    children: [
+      {
+        path: '',
+        component: AddressComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'address',
+        component: AddressComponent,
+      },
+      {
+        path: 'account',
+        component: AccountDetailsComponent,
+      },
+    ],
     canActivate: [UserAuthGuard]
   },
   {
@@ -80,6 +94,10 @@ const routes: Routes = [
   {
     path : 'products/:id',
     component: ProductDetailsComponent,
+  },
+  {
+    path : 'checkout',
+    component: CheckoutComponent,
   },
   {
     path : 'home',

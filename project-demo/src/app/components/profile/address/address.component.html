@@ -1,0 +1,50 @@
+<form #addressForm="ngForm" (ngSubmit)="addressForm.valid && saveAddress()">
+  <h2>Billing Address</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="address">Address <sup>*</sup> </label>
+        <input
+          placeholder="address"
+          class="form-control"
+          type="text"
+          name="address"
+          value="{{data.address}}"
+          id="address"
+          autocomplete="off"
+        />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone <sup>*</sup> </label>
+        <input
+          class="form-control"
+          type="text"
+          name="phone"
+          value="{{data.phone}}"
+          id="phone"
+          autocomplete="off"
+
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email address <sup>*</sup> </label>
+        <input
+          placeholder="Email address"
+          class="form-control"
+          type="email"
+          name="email"
+          value="{{data.email_address}}"
+          id="email"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+  </div>
+  <button
+    class="btn btn-primary"
+    [disabled]="addressForm.invalid"
+    (click)="saveAddress()"
+  >
+    SAVE ADDRESS
+  </button>
+</form>

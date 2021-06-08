@@ -1,1 +1,48 @@
-<p>checkout works!</p>
+<div class="row">
+  <form [formGroup]="checkoutForm" (ngSubmit)="checkout()" novalidate>
+    <div class="col-lg-6">
+      <p class="register-content">
+        <label class="register-label" for="email_address">Username or email address<span>*</span></label>
+        <input class="register-input" type="text" id="email_address" name="email_address"
+               formControlName="email_address"
+               aria-label="email_address" matInput  required>
+      </p>
+      <p class="register-content">
+        <label class="register-label" for="firstname">First Name<span>*</span></label>
+        <input class="register-input" type="text" id="firstname" name="firstname" formControlName="firstname"
+               aria-label="firstname" matInput  required>
+      </p>
+      <p class="register-content">
+        <label class="register-label" for="lastname">Last Name<span>*</span></label>
+        <input class="register-input" type="text" id="lastname" name="lastname" formControlName="lastname"
+               aria-label="lastname" matInput  required>
+      </p>
+      <p class="register-content">
+        <label class="register-label" for="address">Address<span>*</span></label>
+        <input class="register-input" type="text" id="address" name="address" formControlName="address"
+               aria-label="address" matInput  required>
+      </p>
+      <p class="register-content">
+        <label class="register-label" for="phone">Phone<span>*</span></label>
+        <input class="register-input" type="text" id="phone" name="phone" formControlName="phone"
+               aria-label="phone" matInput  required>
+      </p>
+      <!--  <p class="register-content description">Your personal data will be used to support your experience throughout-->
+      <!--    this website, to manage access to your account, and for other purposes-->
+      <!--    described in our <span>privacy policy</span>.</p>-->
+      <div class="register-submit">
+        <button type="submit"
+                class="">
+          Check out
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-6" *ngFor="let item of itemsInCart">
+      <div class="product-order">{{item.product.name}} x {{item.quantity_order}}</div>
+    </div>
+    <div>${{total}}</div>
+  </form>
+
+
+
+</div>

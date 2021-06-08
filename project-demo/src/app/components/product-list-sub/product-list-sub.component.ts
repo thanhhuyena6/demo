@@ -26,9 +26,9 @@ export class ProductListSubComponent implements OnInit {
     route.paramMap.subscribe((params: ParamMap) => {
       if (params.get('id')) {
         this.categoryService.getSubCategoryById(params.get('id'))
-          .subscribe(res => {
+          .subscribe((res:any) => {
             console.log(res)
-            this.item = res
+            this.item = res.data
           })
       } else {
         router.navigate(['/home'])
