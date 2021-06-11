@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light " style="margin-bottom: 20px">
+  <div class="container">
+    <a routerLink="/home" routerLinkActive="active" class="navbar-brand">
+      <img src="../../../assets/imgs/logo-light.png" alt="Flatsome">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a *ngIf="!loginSuccess" (click)="openDialog()" routerLink="/" class="nav-link">LOGIN </a>
+          <a *ngIf="loginSuccess" (click)="toggleSideNav()" class="nav-link" routerLink='/profile' routerLinkActive="active"
+          >MY ACCOUNT</a>
+        </li>
+        <li class="nav-divider"></li>
+        <li class="nav-item cart-order">
+          <a routerLink='/cart' (click)="toggleSideNav()" routerLinkActive="active" class="nav-link">
+            <span class="cart-title">
+              CART /
+              <span class="cart-price">${{totalPrice}}</span>
+            </span>
+            <span class="cart-icon">
+              <strong>{{cartNumber}}</strong>
+            </span>
+          </a>
+          <div class="order">
+            <a routerLink="/orders" (click)="toggleSideNav()" routerLinkActive="active" class="nav-link order-list">ORDERS</a>
+            <a routerLink="/order-detail" (click)="toggleSideNav()" routerLinkActive="active" class="nav-link order-detail">ORDERS-DETAIL</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

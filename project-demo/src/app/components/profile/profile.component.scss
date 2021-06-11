@@ -1,0 +1,50 @@
+::ng-deep mat-sidenav-content {
+  margin: 0 auto;
+}
+
+.profile{
+  .nav-pills {
+    .nav-link {
+      color: gray;
+    }
+    .active {
+      background: none;
+      color: black;
+    }
+  }
+  .account-user {
+    margin-bottom: 10px;
+    @media screen and (max-width: 576px){
+      padding-left: 0;
+    }
+    img {
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+  }
+  .profile-title {
+    padding-right: 0;
+    border-right: 1px solid #ececec;
+    @media screen and (max-width: 576px){
+      padding-left: 0;
+      border-right: 0;
+      margin-bottom: 40px;
+    }
+    .nav-link {
+      @media screen and (max-width: 576px){
+        padding-left: 0;
+      }
+    }
+  }
+  .profile-content{
+    @media screen and (max-width: 576px){
+      padding-left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 576px){
+  ::ng-deep mat-sidenav-content {
+    width: 100% !important;
+  }
+}

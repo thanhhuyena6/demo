@@ -1,0 +1,48 @@
+<div class="register">
+  <h3 class="register-heading text-uppercase">Register</h3>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="home-tab">
+      <div class="register-form">
+        <form [formGroup]="registrationForm" (ngSubmit)="register()" novalidate>
+          <div class="register-content">
+            <label class="register-label" for="email_address">Username or email address<span>*</span></label>
+            <input class="register-input form-control" type="text" id="email_address" name="email_address"
+                   formControlName="email_address" aria-label="email_address" matInput required
+            >
+            <div *ngIf="registrationForm.controls['email_address'].invalid && (registrationForm.controls['email_address']
+            .dirty || registrationForm.controls['email_address'].touched)" class="alert alert-danger">
+              <div *ngIf="registrationForm.controls['email_address'].errors?.required">
+                Username can't be plank
+              </div>
+            </div>
+          </div>
+
+
+          <div class="register-content">
+            <label class="register-label" for="password">Password<span>*</span></label>
+            <input class="register-input" type="password" id="password" name="password" formControlName="password"
+                   aria-label="Password" matInput required>
+          </div>
+          <div *ngIf="registrationForm.controls['password'].invalid && (registrationForm.controls['password']
+            .dirty || registrationForm.controls['password'].touched)" class="alert alert-danger">
+            <div *ngIf="registrationForm.controls['password'].errors?.required">
+              Password can't be plank
+            </div>
+          </div>
+          <p class="register-content description">Your personal data will be used to support your experience throughout
+            this website, to manage access to your account, and for other purposes
+            described in our <span>privacy policy</span>.</p>
+          <div class="register-submit">
+            <button [disabled]="!registrationForm.valid" type="submit"
+                    class="">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

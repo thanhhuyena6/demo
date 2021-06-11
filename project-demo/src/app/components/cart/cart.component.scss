@@ -1,0 +1,211 @@
+::ng-deep .mat-horizontal-stepper-header-container {
+  margin-bottom: 40px;
+}
+.cart {
+  .product-quantity {
+    display: flex;
+    margin-right: 20px;
+
+    .button.minus {
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .is-form, input[type='button'].is-form {
+      overflow: hidden;
+      position: relative;
+      background-color: #f9f9f9;
+      text-shadow: 1px 1px 1px #fff;
+      color: #666;
+      border: 1px solid #ddd;
+      text-transform: none;
+      font-weight: normal;
+      padding: 0 7px;
+    }
+
+    input[type="number"] {
+      max-width: 40px;
+      width: 40px;
+      text-align: center;
+      border-radius: 0;
+      border: 1px solid #ddd;
+      margin: 0;
+      font-size: 16px;
+      -moz-appearance: textfield;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .item-details-title {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      padding: 0;
+      color: #666;
+      border-bottom: 2px solid rgba(102,102,102,.7);
+      th {
+        margin-bottom: 10px;
+      }
+    }
+    .item-details-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0;
+      border-bottom: 1px solid rgba(120,120,120,.7);
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      td {
+        font-size: 14px;
+      }
+      .item-details-img {
+        padding-left: 15px;
+        display: flex;
+        align-items: center;
+        .delete{
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: none;
+          border: 1px solid #666666;
+          color: #666;
+          opacity: .7;
+        }
+        img {
+          width: 70px;
+          height: 90px;
+          padding: 0 5px;
+        }
+      }
+      .item-details-price {
+        color: #111;
+        font-weight: 700;
+      }
+    }
+
+  }
+  .cart-button{
+    display: flex;
+    button {
+      background: #446084;
+      color: #fff;
+      margin-bottom: 30px;
+      transition: all .3s ease;
+      &:hover {
+        color: #111111;
+      }
+    }
+    .updated {
+      opacity: 0.6;
+    }
+  }
+  p {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .cart-update {
+    img {
+      width: 130px;
+      height: 150px;
+      margin-bottom: 10px;
+    }
+    .cart-update-name {
+      p {
+        font-size: 14px;
+        color: #334862;
+        transition: all .3s ease;
+        &:hover{
+          color: #111111;
+        }
+      }
+    }
+    .cart-update-price {
+      font-size: 14px;
+      color: #111;
+    }
+  }
+
+  .total-detail {
+
+    p, .subtotal p, .total p {
+      color: #666;
+      font-size: 14px;
+    }
+    .subtotal, .shipping, .total {
+      display: flex;
+      justify-content: space-between;
+    }
+    .subtotal {
+      p {
+        font-weight: 400;
+      }
+      .sub-money {
+        color: #111;
+        font-weight: 600;
+      }
+    }
+    .shipping {
+      align-items: center;
+      p {
+        font-weight: 400;
+      }
+      .shipping-text {
+        text-align: right;
+        a {
+          font-weight: 400;
+          color: #334862;
+        }
+      }
+    }
+    .total {
+      p {
+        font-weight: 400;
+      }
+      .total-money {
+        color: #111;
+        font-weight: 600;
+      }
+    }
+    button {
+      background: #D26E4B;
+      color: #fff;
+      transition: all .3s ease;
+      &:hover {
+        color: #111;
+      }
+    }
+  }
+
+}
+
+::ng-deep .mat-step-icon {
+  background-color: #D26E4B!important;
+}
+
+::ng-deep .mat-step-label {
+  color: #111 !important;
+}
+
+::ng-deep mat-horizontal-stepper {
+  margin:  0 -15px;
+  @media screen and (max-width: 768px){
+    margin: 0;
+  }
+}
+@media screen and (max-width: 768px){
+  ::ng-deep .mat-horizontal-stepper-header-container {
+    margin: 0 -20px 40px -20px;
+  }
+
+}

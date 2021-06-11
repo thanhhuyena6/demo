@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row profile">
+    <div class="col-lg-3 col-md-4 col-sm-6 profile-title">
+      <div class="nav-link account-user">
+        <img src="https://secure.gravatar.com/avatar/455dad5c6a0a21e5dfad684f7472b343?s=70&d=mm&r=g" alt=""/>
+        <p>{{changes.email_address}}</p>
+      </div>
+      <div
+        class="nav flex-column nav-pills"
+        id="v-pills-tab"
+        role="tablist"
+        aria-orientation="vertical"
+      >
+        <a
+          class="nav-link active"
+          id="v-pills-home-tab"
+          data-toggle="pill"
+          routerLink='/profile/address'
+          role="tab"
+          aria-controls="v-pills-home"
+          aria-selected="true">ADDRESSES</a>
+        <mat-divider></mat-divider>
+        <a
+          class="nav-link"
+          id="v-pills-profile-tab"
+          data-toggle="pill"
+          routerLink='/profile/account'
+          role="tab"
+          aria-controls="v-pills-profile"
+          aria-selected="false">ACCOUNT DETAILS</a>
+        <mat-divider></mat-divider>
+        <a
+          class="nav-link"
+          id="v-pills-profile-tab"
+          data-toggle="pill"
+          routerLink='/profile/account'
+          role="tab"
+          aria-controls="v-pills-profile"
+          aria-selected="false"
+          (click)="openLogout()">LOG OUT</a>
+      </div>
+    </div>
+    <!-- <mat-divider [vertical]="true"></mat-divider> -->
+    <div class="col-lg-9 col-md-8 col-sm-6 profile-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

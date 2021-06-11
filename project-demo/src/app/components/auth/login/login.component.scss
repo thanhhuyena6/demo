@@ -1,0 +1,82 @@
+@import "../../../../variable";
+
+.login{
+  h3{
+    color: $color-text-product;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .login-item{
+    .login-content{
+      margin-bottom: 10px;
+      .login-label {
+        font-size: 14px;
+        color: $color-label;
+        font-weight: 700;
+        margin-bottom: 5px;
+        span {
+          margin-left: 2px;
+        }
+      }
+      .login-input {
+        border: 1px solid $color-border-login;
+        padding: 0 0 0 10px;
+        margin-bottom: 15px;
+        height: 40px;
+        max-height: 40px;
+        font-size: 16px;
+        border-radius: 0;
+        max-width: 100%;
+        width: 100%;
+        background-color: $color-default;
+        color: $color-input;
+        &:focus {
+          box-shadow: 0 0 5px #ccc;
+          //opacity: 1 ;
+          outline: 0;
+        }
+      }
+    }
+    .login-checkbox{
+      margin-bottom: 10px;
+      input {
+        margin-right: 10px;
+      }
+      label {
+        color: $color-label;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1;
+      }
+    }
+    .login-submit{
+      margin-bottom: 10px;
+      button{
+        cursor: pointer;
+        padding: 0 20px;
+        font-size: 16px;
+        line-height: 2;
+        font-weight: 700;
+        color: $color-default;
+        text-transform: uppercase;
+        background: $background-product;
+        border: 1px solid transparent;
+        transition: all .3s ease;
+        &:hover {
+          background: $color-product-item;
+        }
+      }
+    }
+    .login-forgot{
+      margin-bottom: 10px;
+      a {
+        color: $color-product-item;
+        font-size: 16px;
+        transition: all .3s ease;
+        &:hover{
+          color: $color-text-hover;
+        }
+      }
+    }
+  }
+}

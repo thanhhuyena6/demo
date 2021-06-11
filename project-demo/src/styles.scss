@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+html, body {
+  font-family: 'Lato' , sans-serif !important;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  li {
+    list-style: none;
+  }
+}
+a {
+  text-decoration: none !important;
+}
+.container {
+  padding: 0 15px;
+  max-width: 1200px !important;
+  margin: 0 auto;
+  @media (min-width: 992px) {
+    max-width: unset;
+  }
+  @media (min-width: 768px) {
+    max-width: unset;
+  }
+  @media (min-width: 576px) {
+    max-width: unset;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

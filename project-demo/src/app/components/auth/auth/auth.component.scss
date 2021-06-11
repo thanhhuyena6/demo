@@ -1,0 +1,20 @@
+@import "../../../../variable";
+
+button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: $color-default;
+  background: transparent;
+  padding: 15px;
+  font-size: 20px;
+  transition: all .3s ease;
+  outline: none;
+  border: none;
+  &:hover {
+    background: $background-product;
+  }
+}
+.col {
+  padding: 0 30px;
+}
