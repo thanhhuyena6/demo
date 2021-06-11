@@ -1,4 +1,4 @@
-<div class="row product-details" style="margin: 8px; padding-top: 60px" *ngIf="product">
+<div class="row product-details" style="margin: 8px;" *ngIf="product">
   <div class="col-md-6 product-details-item">
     <ngx-slick-carousel class="carousel"
                         #slickModal="slick-carousel"
@@ -10,7 +10,7 @@
     <div class="product-details-sub row">
       <img *ngFor="let images of product.images"
            [src]="images.image_url" alt="{{images}}"
-           class="product-img col-md-4">
+           class="product-img col-md-4 col-sm-4">
     </div>
   </div>
   <button class="btn-prev" (click)="slickModal.slickNext()">

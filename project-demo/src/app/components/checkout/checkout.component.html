@@ -1,48 +1,104 @@
-<div class="row">
-  <form [formGroup]="checkoutForm" (ngSubmit)="checkout()" novalidate>
-    <div class="col-lg-6">
-      <p class="register-content">
-        <label class="register-label" for="email_address">Username or email address<span>*</span></label>
-        <input class="register-input" type="text" id="email_address" name="email_address"
-               formControlName="email_address"
-               aria-label="email_address" matInput  required>
-      </p>
-      <p class="register-content">
-        <label class="register-label" for="firstname">First Name<span>*</span></label>
-        <input class="register-input" type="text" id="firstname" name="firstname" formControlName="firstname"
-               aria-label="firstname" matInput  required>
-      </p>
-      <p class="register-content">
-        <label class="register-label" for="lastname">Last Name<span>*</span></label>
-        <input class="register-input" type="text" id="lastname" name="lastname" formControlName="lastname"
-               aria-label="lastname" matInput  required>
-      </p>
-      <p class="register-content">
-        <label class="register-label" for="address">Address<span>*</span></label>
-        <input class="register-input" type="text" id="address" name="address" formControlName="address"
-               aria-label="address" matInput  required>
-      </p>
-      <p class="register-content">
-        <label class="register-label" for="phone">Phone<span>*</span></label>
-        <input class="register-input" type="text" id="phone" name="phone" formControlName="phone"
-               aria-label="phone" matInput  required>
-      </p>
-      <!--  <p class="register-content description">Your personal data will be used to support your experience throughout-->
-      <!--    this website, to manage access to your account, and for other purposes-->
-      <!--    described in our <span>privacy policy</span>.</p>-->
-      <div class="register-submit">
-        <button type="submit"
-                class="">
-          Check out
-        </button>
+<form [formGroup]="checkoutForm" (ngSubmit)="checkout()" novalidate class="row">
+  <div class="col-lg-7 col-md-7 col-sm-10 row">
+    <div class="col-lg-12 col-md-12 row checkout-form" >
+      <h2 class="title" style="padding-left: 15px">BILLING DETAILS</h2>
+      <div class="checkout-content col-lg-12 col-md-12 col-sm-12" >
+        <input class="checkout-input" type="text" id="email_address" name="email_address" placeholder="Email address"
+               formControlName="email_address" aria-label="email_address" matInput required>
+        <div *ngIf="checkoutForm.controls['email_address'].invalid && (checkoutForm.controls['email_address']
+            .dirty || checkoutForm.controls['email_address'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['email_address'].errors?.required">
+            Email can't be plank
+          </div>
+        </div>
+      </div>
+      <div class="checkout-content col-lg-6 col-md-6 col-sm-12" >
+        <input class="checkout-input" type="text" id="firstname" name="firstname" formControlName="firstname"
+               aria-label="firstname" placeholder="First name" matInput required>
+        <div *ngIf="checkoutForm.controls['firstname'].invalid && (checkoutForm.controls['firstname']
+            .dirty || checkoutForm.controls['firstname'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['firstname'].errors?.required">
+            Firstname can't be plank
+          </div>
+        </div>
+      </div>
+      <div class="checkout-content col-lg-6 col-md-6 col-sm-12">
+        <input class="checkout-input" type="text" id="lastname" name="lastname" formControlName="lastname"
+               aria-label="lastname" placeholder="Last name" matInput required>
+        <div *ngIf="checkoutForm.controls['lastname'].invalid && (checkoutForm.controls['lastname']
+            .dirty || checkoutForm.controls['lastname'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['lastname'].errors?.required">
+            Lastname can't be plank
+          </div>
+        </div>
+      </div>
+      <div class="checkout-content col-lg-12 col-md-12 col-sm-12">
+        <input class="checkout-input" type="text" id="address" name="address" formControlName="address"
+               aria-label="address" placeholder="Address" matInput required>
+        <div *ngIf="checkoutForm.controls['address'].invalid && (checkoutForm.controls['address']
+            .dirty || checkoutForm.controls['address'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['address'].errors?.required">
+            Email can't be plank
+          </div>
+        </div>
+      </div>
+      <div class="checkout-content col-lg-12 col-md-12 col-sm-12">
+        <input class="checkout-input" type="text" id="phone" name="phone" formControlName="phone"
+               aria-label="phone" placeholder="Phone" matInput required>
+        <div *ngIf="checkoutForm.controls['phone'].invalid && (checkoutForm.controls['phone']
+            .dirty || checkoutForm.controls['phone'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['phone'].errors?.required">
+            Phone can't be plank
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-lg-6" *ngFor="let item of itemsInCart">
-      <div class="product-order">{{item.product.name}} x {{item.quantity_order}}</div>
+<!--    <div class="col-lg-6" *ngFor="let item of itemsInCartOrder">-->
+<!--      <div class="product-order">{{item.product_name}} x {{item.quantity_order}}</div>-->
+<!--    </div>-->
+  </div>
+  <div class="your-order col-lg-5 col-md-5 col-sm-10">
+    <h2 class="title">YOUR ORDER</h2>
+    <div class="header">
+      <h4 class="header-title">PRODUCT</h4>
+      <h4 class="header-subtotal">SUBTOTAL</h4>
     </div>
-    <div>${{total}}</div>
-  </form>
+    <mat-divider></mat-divider>
+    <div class="product" *ngFor="let item of itemsInCart">
+      <p class="product-item">{{ item.product_name }} x {{ item.quantity_order }}</p>
+      <p class="product-price">${{ subtotal }}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="subtotal">
+      <p class="subtotal-item">Subtotal</p>
+      <p class="subtotal-price">${{ itemsOrder.total_price }}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="ship">
+      <p class="ship-item">Shipping</p>
+      <p class="ship-price">Enter your address to view shipping options.</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="total">
+      <p class="total-item">Total</p>
+      <p class="total-price">${{ itemsOrder.total_price }}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <p class="text mt-3">
+      Please fill in your details above to see available payment methods.
+    </p>
+    <div class="check">
+      <input type="checkbox"/>
+      <p>I have read and agree to the website terms and conditions *</p>
+    </div>
+    <button class="btn rounded-0" (click)="getChange()" type="submit">
+      PLACE ORDER
+    </button>
+    <p class="police">
+      Your personal data will be used to process your order, support your
+      experience throughout this website, and for other purposes described in our
+      privacy policy.
+    </p>
+  </div>
+</form>
 
-
-
-</div>

@@ -23,10 +23,13 @@ export class ProductDetailsComponent implements OnInit {
   count: number;
   quantity: any;
   items: any;
+  toggle: any;
   value: number = 0;
   valueCart: number = 0;
   itemsInCart: any = [];
   quantity_order:number;
+  totalPrice:number = 0;
+
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -52,8 +55,6 @@ export class ProductDetailsComponent implements OnInit {
     })
 
   }
-
-
   slideConfig = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -76,7 +77,7 @@ export class ProductDetailsComponent implements OnInit {
        this.itemsInCart.map((element: any) => {
          if (element.product.id === this.items.product.id){
            element.quantity_order -= 1;
-           element.subtotal = element.quantity_order * element.product.price;
+           // element.subtotal = element.quantity_order * element.product.price;
          }
        })
       }
@@ -92,31 +93,36 @@ export class ProductDetailsComponent implements OnInit {
     localStorage.setItem('arrayCart', JSON.stringify(this.itemsInCart));
     console.log(this.itemsInCart)
     this.itemsInCart.map((element:any) => {
-        this.valueCart = element.quantity_order
+        this.valueCart = element.quantity_order;
     })
-    this.quantity = {
-      product: item,
-      quantity_order: this.valueCart,
-    }
+    this.itemsInCart.forEach((element: any) => {
+      this.totalPrice += element.price * element.quantity_order;
+      console.log(this.totalPrice)
+    })
 
+    this.common.totalPrice.next(this.totalPrice)
     this.common.cartNumber.next(this.valueCart);
+
   }
   pushToCart(item: any) {
     this.arrayCart = localStorage.getItem('arrayCart');
     this.itemsInCart = JSON.parse(this.arrayCart);
+    console.log(this.itemsInCart)
     this.items = {
-      product: item,
-      quantity_order: 1,
-      subtotal: item.price,
+        product_id: item.id,
+        price: item.price,
+        quantity_order: 1,
+        product_name: item.name,
+        product_img: item.images,
     }
     let isInCart;
       isInCart = this.itemsInCart.some((element:any) =>
-      element.product.id === this.items.product.id);
+      element.product_id === this.items.product_id);
     if (isInCart){
       this.itemsInCart.map ((element:any) => {
-        if (element.product.id === this.items.product.id){
+        if (element.product_id === this.items.product_id){
           element.quantity_order += this.items.quantity_order
-          element.subtotal = element.quantity_order * element.product.price;
+          // element.subtotal = element.quantity_order * element.price;
         }
         console.log('quantity', element.quantity_order)
         return element;
@@ -124,7 +130,6 @@ export class ProductDetailsComponent implements OnInit {
     } else {
       this.itemsInCart.push(this.items);
     }
-    console.log('items in cart', this.itemsInCart)
     this.itemsInCart.forEach((element:any) => {
       this.value = element.quantity_order;
       console.log(this.value)

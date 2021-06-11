@@ -1,0 +1,73 @@
+form {
+  .checkout-form {
+    padding-left: 0;
+    @media screen and (max-width: 768px){
+      padding-left: 0;
+    }
+  }
+  .title {
+    font-weight: 600;
+    color: #555;
+    font-size: 18px;
+  }
+
+  .checkout-content {
+    input {
+      height: 50px;
+      width: 100%;
+      padding: 0 10px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .your-order {
+    border: 1px solid;
+    padding: 20px;
+
+    .title {
+      color: #555555;
+    }
+
+    .header {
+      &-title,
+      &-subtotal {
+        margin: 0;
+      }
+    }
+
+    .header, .product, .subtotal, .ship, .total {
+      color: #777777;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      p {
+        margin: 0;
+      }
+    }
+
+    .subtotal-price, .product-price, .total-price {
+      color: #111;
+      font-weight: 600;
+    }
+
+    .check {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+
+      p {
+        margin: 0 0 0 15px;
+      }
+    }
+
+    button {
+      background-color: #d26e4b;
+      margin-bottom: 20px;
+      color: #fff;
+      transition: all .3s ease;
+      &:hover {
+        color: #111111;
+      }
+    }
+  }
+}

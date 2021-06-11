@@ -29,9 +29,12 @@ export class AuthService {
   _loginUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/login`;
   _logoutUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/logout`;
   _profileUrl = `http://project-demo-gumi.herokuapp.com/api/home/user/show`;
-  _updateUrl = `http://project-demo-gumi.herokuapp.com/api/home/user/update`
-  _checkoutUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/checkout`
+  _updateUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/update`;
+  _updatePassword = `https://project-demo-gumi.herokuapp.com/api/home/user/change_password`
+  _updateAddress = `https://project-demo-gumi.herokuapp.com/api/home/user/change_address`
+  _checkoutUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/cart/checkout`
   _cartOrderUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/cart/order`;
+  _showOrdersUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/cart/show`;
   private _usersURL = `http://localhost:3000/auth/system-users`;
   // private _userDataURL = `http://localhost:3000/auth/profile`;
 
@@ -56,11 +59,16 @@ export class AuthService {
     return this.http.post<void>(this._registerUrl, registrationInfo);
   }
   order(checkoutInfo:any): Observable<void>{
-    return this.http.post<void>(this._cartOrderUrl, checkoutInfo);
+    return this.http.post<void>(this._cartOrderUrl, checkoutInfo, { headers: this.getTokenProfile()});
   }
 
-  checkoutProduct(info: any) : Observable<void>{
-    return this.http.post<void>(this._checkoutUrl, info)
+  showOrder(orderId:any) : Observable<void>{
+    let url = `${this._showOrdersUrl}/${orderId}`;
+    return this.http.get<void>(url , { headers: this.getTokenProfile()})
+  }
+
+  checkoutProduct() : Observable<void>{
+    return this.http.get<void>(this._checkoutUrl, { headers: this.getTokenProfile()})
   }
 
   login(user: any): Observable<any> {
@@ -76,7 +84,6 @@ export class AuthService {
     const profile = localStorage.getItem('token');
     // const getProfile:any = JSON.parse(profile)
     // this.token = JSON.parse(this.token);
-    console.log(profile)
     if (profile) {
       const token = `Bearer ${profile}`;
       authHeader = new HttpHeaders({
@@ -101,12 +108,12 @@ export class AuthService {
     });
   }
   updatePass(body: any) {
-    return this.http.put(`${this._updateUrl}/changepass`, body, {
+    return this.http.put(`${this._updatePassword}`, body, {
       headers: this.getTokenProfile(),
     });
   }
   updateAddress(body: any) {
-    return this.http.put(`${this._profileUrl}/changeaddress`, body, {
+    return this.http.put(`${this._updateAddress}`, body, {
       headers: this.getTokenProfile(),
     });
   }

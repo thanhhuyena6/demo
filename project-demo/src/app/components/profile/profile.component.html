@@ -1,12 +1,10 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-3 p-0">
+  <div class="row profile">
+    <div class="col-lg-3 col-md-4 col-sm-6 profile-title">
       <div class="nav-link account-user">
-        <img src="" alt=""/>
-        <p>Email</p>
+        <img src="https://secure.gravatar.com/avatar/455dad5c6a0a21e5dfad684f7472b343?s=70&d=mm&r=g" alt=""/>
+        <p>{{changes.email_address}}</p>
       </div>
-      <mat-divider></mat-divider>
-
       <div
         class="nav flex-column nav-pills"
         id="v-pills-tab"
@@ -43,7 +41,7 @@
       </div>
     </div>
     <!-- <mat-divider [vertical]="true"></mat-divider> -->
-    <div class="col-lg-9 pt-5 pb-5">
+    <div class="col-lg-9 col-md-8 col-sm-6 profile-content">
       <router-outlet></router-outlet>
     </div>
   </div>

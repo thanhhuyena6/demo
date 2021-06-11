@@ -9,8 +9,6 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">{{products.name}}</h5>
-            <mat-divider class="m-2">
-            </mat-divider>
             <p class="card-text lead">${{products.price}}</p>
           </div>
           <div class="card-footer">
@@ -18,37 +16,10 @@
               <button (click)="viewProductDetails(products)" class="btn btn-outline-info">
                 Quick View
               </button>
-              <!--              <button class="btn btn-outline-primary">-->
-              <!--                Add to cart-->
-              <!--              </button>-->
             </div>
           </div>
         </div>
       </div>
-
-      <!--  <div class="col-md-4 category-detail" *ngFor="let product of products" >-->
-      <!--   <div *ngFor="let subcategory of product.subcategory">-->
-      <!--     <div class="card-sub" *ngFor="let products of subcategory.products">-->
-      <!--       <div class="card-item-sub" *ngFor="let images of products.images">-->
-      <!--         <img class="card-item-img" [src]="images.image_url" *ngIf="products.images.length === 1">-->
-      <!--       </div>-->
-      <!--       <div class="card-body">-->
-      <!--         <h5 class="card-title">{{products.name}}</h5>-->
-      <!--       </div>-->
-      <!--       <p class="card-text lead">${{products.price}}</p>-->
-      <!--       <div class="card-footer">-->
-      <!--         <div class="row justify-content-center">-->
-      <!--           <button (click)="viewProductDetails(products)" class="btn btn-outline-info">-->
-      <!--             View details-->
-      <!--           </button>-->
-      <!--           <button class="btn btn-outline-primary">-->
-      <!--             Add to cart-->
-      <!--           </button>-->
-      <!--         </div>-->
-      <!--       </div>-->
-      <!--     </div>-->
-      <!--   </div>-->
-      <!--  </div>-->
     </div>
   </div>
 </div>

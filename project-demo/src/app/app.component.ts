@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
   currentRoute: any;
   product: Product;
   link: any;
+  classDefault: any = "col-lg-9 col-md-9 col-sm-9";
   panelOpenState: any;
   productList: ProductListComponent;
 
@@ -45,6 +46,11 @@ export class AppComponent implements OnInit {
         console.log(this.currentRoute)
         if (this.currentRoute === '/home'){
             this.opened = true;
+          $("mat-sidenav-content").removeClass("col-lg-12 col-md-12 col-sm-12")
+            .addClass(this.classDefault);
+        }
+        if (this.currentRoute === '/admin' || this.currentRoute === '/admin/dashboard'){
+          this.opened = false;
         }
       });
   }
@@ -54,6 +60,12 @@ export class AppComponent implements OnInit {
     this.prepareCategories();
     this.common.toggleSideNav.subscribe((toggle: any) => {
       this.opened = toggle;
+    })
+    this.common.removeClass.subscribe((toggle:any) => {
+      $("mat-sidenav-content").removeClass(toggle);
+    })
+    this.common.addClass.subscribe((toggle:any) => {
+      $("mat-sidenav-content").addClass(toggle);
     })
   }
 

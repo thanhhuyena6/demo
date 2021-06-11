@@ -1,16 +1,15 @@
 <app-header></app-header>
-<!--  <app-breadcrumb></app-breadcrumb>-->
+  <app-breadcrumb></app-breadcrumb>
 <ng-container>
   <div class="container">
-    <mat-sidenav-container class="example-container row" autosize>
-      <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="example-sidenav justify-content-center col-lg-3"
-                   [fixedInViewport]="false" style="border: none"
-                   *ngIf="categories"
+    <mat-sidenav-container class="example-container row" autosize style="background: #fff">
+      <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="example-sidenav justify-content-center col-lg-3
+                    col-md-3 col-sm-3" [fixedInViewport]="false" style="border: none" *ngIf="categories"
       >
         <app-category-list [inputCategories]="categories"></app-category-list>
       </mat-sidenav>
 
-      <mat-sidenav-content class="col-lg-9" style="min-height: 1000px; background: #fff; overflow: hidden">
+      <mat-sidenav-content class="col-lg-9 col-md-9 col-sm-9" style="min-height: 1300px; background: #fff; overflow: hidden">
         <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>

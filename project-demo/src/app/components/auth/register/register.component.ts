@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
   messageError: string = '';
 
+
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private _snackBar: MatSnackBar,
@@ -32,7 +33,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
         email_address: new FormControl(null, Validators.required),
-        password: new FormControl(null)
+        password: new FormControl(null, Validators.required)
       // authCredentialsDto: new FormGroup({
       //   email_address: new FormControl(null, Validators.required),
       //   password: new FormControl(null)

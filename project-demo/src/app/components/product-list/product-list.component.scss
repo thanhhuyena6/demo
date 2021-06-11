@@ -1,7 +1,7 @@
 @import "../../../variable";
 
 
-.row {
+.list-content {
   .product-list, .product-list-sub{
     position: relative;
     display: flex;
@@ -87,6 +87,17 @@
         border-radius: 0px;
       }
     }
-  }
 
+    @media screen and (max-width: 900px) {
+      h3 {
+        bottom: 65px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      h3 {
+        bottom: 55px;
+      }
+    }
+  }
 }

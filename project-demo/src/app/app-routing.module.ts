@@ -19,6 +19,10 @@ import {ProductListSubComponent} from "./components/product-list-sub/product-lis
 import {CartResolverService} from "./resolvers/cart-resolver.service";
 import {AddressComponent} from "./components/profile/address/address.component";
 import {AccountDetailsComponent} from "./components/profile/account-details/account-details.component";
+import {OrdersDetailComponent} from "./components/orders/orders-detail/orders-detail.component";
+import {AdminComponent} from "./admin/components/admin/admin.component";
+import {AdminLoginComponent} from "./admin/components/admin-login/admin-login.component";
+import {SidebarComponent} from "./admin/components/sidebar/sidebar.component";
 
 const routes: Routes = [
   // {
@@ -55,9 +59,11 @@ const routes: Routes = [
     path : 'orders',
     component: OrdersComponent,
     canActivate: [UserAuthGuard],
-    resolve: {
-      cart: CartResolverService
-    }
+  },
+  {
+    path : 'order-detail',
+    component: OrdersDetailComponent,
+    canActivate: [UserAuthGuard],
   },
   {
     path : 'cart',
@@ -123,10 +129,20 @@ const routes: Routes = [
   },
 
   {
-    path: 'admin', // this is the prefix route
-    canActivate: [UserAuthGuard],
-    //lazy loading: this module will not loaded only if the user navigate into it
-    loadChildren: () => import('./admin/admin.module').then(a => a.AdminModule)
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        component: AdminLoginComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'sidebar',
+        component: SidebarComponent,
+
+      },
+    ],
   },
   {
     path: '**',
