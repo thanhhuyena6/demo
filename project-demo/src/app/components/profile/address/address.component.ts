@@ -24,7 +24,7 @@ export class AddressComponent implements OnInit {
   }
 
   saveAddress() {
-    // console.log(this.data);
+    console.log(this.data);
     this.authService.updateAddress(this.data).subscribe((data) => {});
   }
 

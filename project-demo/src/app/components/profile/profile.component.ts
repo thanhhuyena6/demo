@@ -14,6 +14,7 @@ import {MatDialog} from "@angular/material/dialog";
 export class ProfileComponent implements OnInit {
   profile: Profile;
   modalRef: BsModalRef;
+  changes: any = {};
 
   constructor(private authService: AuthService,
               public dialog: MatDialog,
@@ -30,7 +31,17 @@ export class ProfileComponent implements OnInit {
     address: null,
   }
 
+  getAccDetails() {
+    this.authService.getProfile().subscribe((data: any) => {
+      console.log(data);
+      if (data) {
+        this.changes = data;
+      }
+    });
+  }
+
   ngOnInit(): void {
+    this.getAccDetails();
   }
 
   openLogout() {

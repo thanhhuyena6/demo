@@ -1,23 +1,23 @@
 <form
-  class="mb-5"
+  class="mb-5 account-detail"
   #updateDetail="ngForm"
   (ngSubmit)="updateDetail.valid && saveProfile()"
 >
   <div class="row">
     <div class="col">
       <div class="form-group">
-        <label for="username">First name<sup>*</sup></label>
+        <label for="first_name">First name<sup>*</sup></label>
         <input
           class="form-control"
           type="text"
-          name="firstname"
-          [(ngModel)]="changes.firstname"
-          id="username"
+          name="first_name"
+          [(ngModel)]="changes.first_name"
+          id="first_name"
           autocomplete="off"
           required
-          #firstname="ngModel"
+          #first_name="ngModel"
           [ngClass]="{
-            'is-invalid': firstname.touched && firstname.invalid
+            'is-invalid': first_name.touched && first_name.invalid
           }"
         />
         <span class="invalid-feedback">First name can't be plank</span>
@@ -25,18 +25,18 @@
     </div>
     <div class="col">
       <div class="form-group">
-        <label for="lastname">Last name <sup>*</sup></label>
+        <label for="last_name">Last name <sup>*</sup></label>
         <input
           class="form-control"
           type="text"
-          name="lastname"
-          [(ngModel)]="changes.lastname"
-          id="lastname"
+          name="last_name"
+          [(ngModel)]="changes.last_name"
+          id="last_name"
           autocomplete="off"
           required
-          #lastname="ngModel"
+          #last_name="ngModel"
           [ngClass]="{
-            'is-invalid': lastname.touched && lastname.invalid
+            'is-invalid': last_name.touched && last_name.invalid
           }"
         />
         <span class="invalid-feedback">Last name can't be plank</span>
@@ -46,19 +46,19 @@
   <div class="row">
     <div class="col-12">
       <div class="form-group">
-        <label for="username">Display name <sup>*</sup></label>
+        <label for="display_name">Display name <sup>*</sup></label>
         <input
           class="form-control"
           type="text"
-          name="username"
-          [(ngModel)]="changes.username"
-          id="username"
+          name="display_name"
+          [(ngModel)]="changes.display_name"
+          id="display_name"
           autocomplete="off"
           required
-          value="{{this.changes.email_address}}"
-          #username="ngModel"
+          value="{{this.changes.display_name}}"
+          #display_name="ngModel"
           [ngClass]="{
-            'is-invalid': username.touched && username.invalid
+            'is-invalid': display_name.touched && display_name.invalid
           }"
         />
         <span class="invalid-feedback">Display name can't be plank</span>
@@ -72,78 +72,78 @@
   <div class="row">
     <div class="col-12">
       <div class="form-group">
-        <label for="username">Email address <sup>*</sup></label>
+        <label for="email_address">Email address <sup>*</sup></label>
         <input
           class="form-control"
           type="email"
-          name="email"
-          [(ngModel)]="changes.email"
-          id="email"
+          name="email_address"
+          [(ngModel)]="changes.email_address"
+          id="email_address"
           autocomplete="off"
           required
-          #email="ngModel"
+          #email_address="ngModel"
           [ngClass]="{
-            'is-invalid': email.touched && email.invalid
+            'is-invalid': email_address.touched && email_address.invalid
           }"
         />
-        <span class="invalid-feedback">Email adress can't be plank</span>
+        <span class="invalid-feedback">Email address can't be plank</span>
       </div>
     </div>
   </div>
   <button class="btn btn-primary" (click)="saveProfile()">SAVE CHANGES</button>
 </form>
 <h2>PASSWORD CHANGE</h2>
-<mat-divider></mat-divider>
+<mat-divider style="margin-bottom: 20px"></mat-divider>
 <form #updateDetail="ngForm" (ngSubmit)="updateDetail.valid && savePass()">
   <div class="row">
     <div class="col">
       <div class="form-group">
-        <label for="currentPassword">Current password</label>
+        <label for="password_current">Current password</label>
         <input
           class="form-control"
           type="password"
-          name="currentPassword"
-          [(ngModel)]="changes.currentPassword"
-          id="currentPassword"
+          name="password_current"
+          [(ngModel)]="changes.password_current"
+          id="password_current"
           autocomplete="off"
           required
-          #currentPassword="ngModel"
+          #password_current="ngModel"
           [ngClass]="{
-            'is-invalid': currentPassword.touched && currentPassword.invalid
+            'is-invalid': password_current.touched && password_current.invalid
           }"
         />
         <span class="invalid-feedback">Current password can't be plank</span>
       </div>
       <div class="form-group">
-        <label for="newPassword">New password</label>
+        <label for="password">New password</label>
         <input
           class="form-control"
           type="password"
-          name="newPassword"
-          [(ngModel)]="changes.newPassword"
-          id="newPassword"
+          name="password"
+          [(ngModel)]="changes.password"
+          id="password"
           autocomplete="off"
           required
-          #newPassword="ngModel"
+          #password="ngModel"
           [ngClass]="{
-            'is-invalid': newPassword.touched && newPassword.invalid
+            'is-invalid': password.touched && password.invalid
           }"
         />
         <span class="invalid-feedback">New password can't be plank</span>
       </div>
       <div class="form-group">
-        <label for="confirmPassword">Confirm new password</label>
+        <label for="confirm_password">Confirm new password</label>
         <input
           class="form-control"
           type="password"
-          name="confirmPassword"
-          [(ngModel)]="changes.confirmPassword"
-          id="confirmPassword"
+          name="confirm_password"
+          [(ngModel)]="changes.confirm_password"
+          id="confirm_password"
           autocomplete="off"
           required
-          #confirmPassword="ngModel"
+          #confirm_password="ngModel"
           [ngClass]="{
-            'is-invalid': confirmPassword.touched && confirmPassword.invalid
+            'is-invalid': confirm_password.touched && confirm_password.invalid
           }"
         />
         <span class="invalid-feedback">Confirm password can't be plank</span>

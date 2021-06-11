@@ -5,6 +5,7 @@ import {AuthComponent} from "../auth/auth/auth.component";
 import {ProductDetailsComponent} from "../product-details/product-details.component";
 import {CommonService} from "../../services/common.service";
 import {element} from "protractor";
+import {count} from "rxjs/operators";
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,8 @@ export class HeaderComponent implements OnInit {
   arrayCart: any = [];
   quantity:any;
   cartNumber : number = 0;
+  totalPrice: number = 0;
+  open: boolean = false;
   productDetails: ProductDetailsComponent;
 
 
@@ -33,10 +36,20 @@ export class HeaderComponent implements OnInit {
       this.loginSuccess = res;
     });
     this.common.cartNumber.subscribe((count:any) => {
-      console.log('count', count)
-
       this.cartNumber += count;
-      console.log(this.cartNumber)
+    })
+    this.common.cartUpdate.subscribe((value:any) => {
+      this.cartNumber -= value;
+    })
+    this.common.totalPrice.subscribe((value:any) => {
+      this.totalPrice = value;
+    })
+    this.common.totalPriceUpdate.subscribe((value:any) => {
+      this.totalPrice = value;
+    })
+    this.common.remove.subscribe((value:any) => {
+      this.cartNumber = value;
+      this.totalPrice = value;
     })
   }
 
@@ -44,6 +57,10 @@ export class HeaderComponent implements OnInit {
     this.arrayCart = localStorage.getItem('arrayCart');
     this.arrayCart = JSON.parse(this.arrayCart);
     console.log('total cart', this.arrayCart)
+  }
+
+  toggleSideNav() {
+    this.common.toggleSideNav.next(this.open)
   }
 
   checkLogin() {

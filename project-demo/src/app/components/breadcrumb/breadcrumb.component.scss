@@ -1,0 +1,13 @@
+@import "../../../variable";
+
+
+h2 {
+  display: flex;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 400;
+  color: $color-text-title;
+  p {
+    color: $color-text-hover;
+  }
+}

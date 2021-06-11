@@ -75,3 +75,23 @@
   }
 }
 
+.cart-order {
+  position: relative;
+  .order {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    color: #fff;
+    background: #5b5b5b;
+    transition: all .3s ease;
+    display: none;
+    text-align: center;
+  }
+  &:hover {
+    .order{
+      display: block;
+      color: #111;
+    }
+  }
+}

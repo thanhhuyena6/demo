@@ -13,6 +13,7 @@ import {Product} from "../../model/product";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {element} from "protractor";
+import {CommonService} from "../../services/common.service";
 
 @Component({
   selector: 'app-cart',
@@ -21,59 +22,116 @@ import {element} from "protractor";
 })
 export class CartComponent implements OnInit {
   itemsInCart: any = [];
+  itemsInCartOrder: any = [];
   arrayCart: any;
   arrayCartParse: any;
   value: any;
   items: any;
   total: number = 0;
   changes: any = [];
+  valueCart: number = 0;
+  valueCartTotal: number = 0;
+  valueCartDelete: number = 0;
+  totalPriceUpdate: number = 0;
+  messageError: string = '';
+  removeClass: any;
+  addClass: any;
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  dataSource = this.itemsInCart;
+  subtotal: number = 0;
 
 
-  constructor(private cartService: CartService,
-              private authService: AuthService,
-              private route: ActivatedRoute,
-              private fb: FormBuilder,
-              private dialog: MatDialog,
-              private snackBar: MatSnackBar,
-              private modalService: BsModalService,
-              private router: Router) {
+  constructor(private common: CommonService,
+              private _snackBar: MatSnackBar,
+              private _formBuilder: FormBuilder,
+              private authService: AuthService) {
 
   }
 
   ngOnInit(): void {
     this.handleCart();
-    this.getChange()
+    this.removeClass = ("col-lg-9 col-md-9 col-sm-9")
+    this.addClass = ("col-lg-12 col-md-12 col-sm-12")
+    this.common.removeClass.next(this.removeClass)
+    this.common.addClass.next(this.addClass);
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+
   }
 
-  getChange(){
-    this.itemsInCart.forEach((element:any) => {
-      console.log(element)
-    })
-  }
+  // getChange(){
+  //   let ordersProduct = this.itemsInCart;
+  // }
 
-  handleCart(){
+  handleCart() {
     this.arrayCart = localStorage.getItem('arrayCart');
     this.itemsInCart = JSON.parse(this.arrayCart);
     this.itemsInCart.forEach((element:any) => {
-      console.log(element)
-      this.total += element.subtotal
+      this.subtotal += element.price * element.quantity_order;
     })
   }
 
-  delete(item : any){
-    this.itemsInCart.splice(this.itemsInCart.indexOf(item),1)
-    // this.value = 0;
-    localStorage.setItem('arrayCart', JSON.stringify(this.itemsInCart));
+  orderProduct() {
+    this.authService.checkoutProduct().subscribe(
+      (res: any) => {
+        console.log(res)
+        this.messageError = '';
+        this._snackBar.open(res.message, 'OK');
+      }, error => {
+
+      }
+    )
   }
 
-  minus(){
+
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
+  delete(item: any) {
+    let valueCartTotal = 0;
+    let valueCartDelete = 0;
+    this.itemsInCart.map((element: any) => {
+      valueCartTotal += element.quantity_order;
+
+    })
+    this.itemsInCart.splice(this.itemsInCart.indexOf(item), 1)
+    this.itemsInCart.map((element: any) => {
+      valueCartDelete += element.quantity_order;
+    })
+    console.log(this.itemsInCart)
+    this.itemsInCart.forEach((element: any) => {
+      this.totalPriceUpdate += element.price * element.quantity_order;
+      this.subtotal = this.totalPriceUpdate;
+    })
+    if (this.itemsInCart.length === 0) {
+      this.totalPriceUpdate = this.totalPriceUpdate - this.totalPriceUpdate;
+      this.subtotal = this.totalPriceUpdate;
+    }
+    this.valueCart = valueCartTotal - valueCartDelete;
+
+    console.log(this.totalPriceUpdate)
+    localStorage.setItem('arrayCart', JSON.stringify(this.itemsInCart));
+
+    this.common.cartUpdate.next(this.valueCart);
+    this.common.totalPriceUpdate.next(this.totalPriceUpdate)
+  }
+
+  minus() {
     console.log(this.itemsInCart)
   }
+
   pushToCart(item: any) {
     console.log(this.itemsInCart)
 
   }
-
 
 
 }

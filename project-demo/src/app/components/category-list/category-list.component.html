@@ -1,5 +1,4 @@
 <div *ngIf="inputCategories" class="input-category">
-  <h2>HOME/ <p>SHOP</p></h2>
   <h3>BROWSE</h3>
   <mat-divider class="is-divider"></mat-divider>
   <div *ngFor="let category of inputCategories" class="input-category-content">
@@ -32,14 +31,21 @@
       <a href="#">Green <span>(2)</span></a>
     </div>
   </div>
-  <div>
-    <mat-slider aria-label="unit(s)"></mat-slider>
+  <div class="slidecontainer">
+    <h3>FILTER BY PRICE</h3>
+    <mat-divider class="is-divider"></mat-divider>
+    <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+    <button class="input"></button>
+  </div>
+  <div class="filter-price">
+    <button>FILTER</button>
+    <p>Price <span>$0 - $3000</span></p>
   </div>
 </div>
 
 
 <div *ngIf="categories" class="row category-list">
-  <div class="col-md-4 category-item" *ngFor="let category of categories">
+  <div class="col-md-4 col-sm-6 category-item" *ngFor="let category of categories">
     <div class="category-content">
       <img [src]="category.image_url">
       <div class="category-content-title" (click)="viewCategoryDetails(category)">

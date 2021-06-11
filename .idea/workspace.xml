@@ -2,45 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35c36d16-6f44-4a31-9a6b-2d1dd8a7675e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project-demo/src/app/config/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/admin/components/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/admin/components/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/server/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/server/data_category.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/server/product.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/server/sub_category.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/admin/admin-routing.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/admin/admin.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/admin/admin.service.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/app.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/auth/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/auth/login/login.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/auth/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/auth/register/register.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/auth/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/auth/register/register.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/breadcrumb/breadcrumb.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/breadcrumb/breadcrumb.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/breadcrumb/breadcrumb.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/breadcrumb/breadcrumb.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/breadcrumb/breadcrumb.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/breadcrumb/breadcrumb.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/category-details/category-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/category-details/category-details.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/category-list/category-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/category-list/category-list.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/category-list/category-list.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/category-list/category-list.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/category-list/category-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/category-list/category-list.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/header/header.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/header/header.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-details/product-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-details/product-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-details/product-details.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-details/product-details.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-details/product-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-details/product-details.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-list-sub/product-list-sub.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-list-sub/product-list-sub.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-list-sub/product-list-sub.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-list-sub/product-list-sub.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-list/product-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-list/product-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-list/product-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-list/product-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-list/product-list.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-list/product-list.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/profile/account-details/account-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/profile/account-details/account-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/profile/account-details/account-details.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/profile/account-details/account-details.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/profile/address/address.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/profile/address/address.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/profile/address/address.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/profile/address/address.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/profile/profile.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/profile/profile.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/profile/profile.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/profile/profile.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/services/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/services/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/services/category/category.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/services/category/category.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/services/product/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/services/product/product.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-demo/src/app/services/common.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/services/common.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-demo/src/app/shared/page-not-found/page-not-found.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/shared/page-not-found/page-not-found.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,7 +85,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ecommerce/demo/project-demo" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -101,7 +124,11 @@
       <workItem from="1622970505755" duration="6157000" />
       <workItem from="1622976744099" duration="13586000" />
       <workItem from="1623030219544" duration="35309000" />
-      <workItem from="1623116296478" duration="29687000" />
+      <workItem from="1623116296478" duration="37530000" />
+      <workItem from="1623202701982" duration="36880000" />
+      <workItem from="1623288889432" duration="42598000" />
+      <workItem from="1623376695151" duration="147000" />
+      <workItem from="1623380603627" duration="19687000" />
     </task>
     <servers />
   </component>

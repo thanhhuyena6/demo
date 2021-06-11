@@ -30,7 +30,6 @@ import {PageNotFoundComponent} from './shared/page-not-found/page-not-found.comp
 import {ResourceNotFoundComponent} from './shared/resource-not-found/resource-not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./shared/material/material.module";
-import {AdminModule} from "./admin/admin.module";
 import {NgxModule} from "./shared/ngx/ngx.module";
 import {FileModule} from "./shared/file/file.module";
 // import {TokenInterceptorService} from "./services/auth/token-interceptor.service";
@@ -42,6 +41,7 @@ import { DialogComponent } from './shared/dialog/dialog.component';
 import { NavComponent } from './components/nav/nav.component';
 import { AccountDetailsComponent } from './components/profile/account-details/account-details.component';
 import { AddressComponent } from './components/profile/address/address.component';
+import { OrdersDetailComponent } from './components/orders/orders-detail/orders-detail.component';
 
 
 @NgModule({
@@ -72,6 +72,7 @@ import { AddressComponent } from './components/profile/address/address.component
     NavComponent,
     AccountDetailsComponent,
     AddressComponent,
+    OrdersDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +82,6 @@ import { AddressComponent } from './components/profile/address/address.component
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AdminModule,
     NgxModule,
     ReactiveFormsModule,
     FileModule,

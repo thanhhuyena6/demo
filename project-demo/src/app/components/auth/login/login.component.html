@@ -4,16 +4,28 @@
   </h3>
   <div class="login-item">
     <form class="login-form" novalidate [formGroup]="authCredentialsDto" (ngSubmit)="userLogin()">
-      <p class="login-content">
+      <div class="login-content">
         <label class="login-label" for="login">Username or email address<span>*</span></label>
         <input class="login-input" formControlName="login" id="login"
                name="login" type="text" required>
-      </p>
-      <p class="login-content">
+      </div>
+      <div *ngIf="authCredentialsDto.controls['login'].invalid && (authCredentialsDto.controls['login']
+            .dirty || authCredentialsDto.controls['login'].touched)" class="alert alert-danger">
+        <div *ngIf="authCredentialsDto.controls['login'].errors?.required">
+          User can't be plank
+        </div>
+      </div>
+      <div class="login-content">
         <label class="login-label" for="password">Password<span>*</span></label>
         <input class="login-input" formControlName="password" id="password"
                name="password" type="password" required>
-      </p>
+      </div>
+      <div *ngIf="authCredentialsDto.controls['password'].invalid && (authCredentialsDto.controls['password']
+            .dirty || authCredentialsDto.controls['password'].touched)" class="alert alert-danger">
+        <div *ngIf="authCredentialsDto.controls['password'].errors?.required">
+          Password can't be plank
+        </div>
+      </div>
       <div class="login-checkbox">
         <input type="checkbox" id="remember" name="remember">
         <label class="ml-1" for="remember">Remember me</label>

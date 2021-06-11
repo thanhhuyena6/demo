@@ -1,27 +1,120 @@
-<div *ngIf="itemsInCart.length > 0">
-  <div class="item-details row" *ngFor="let item of itemsInCart">
-    <div class="col-lg-3 item-details-img" >
-      <img src="{{item.product.images[0].image_url}}" style="width: 100px; height: 200px">
-    </div>
-    <div class="col-lg-3 item-details-name">
-      {{item.product.name}}
-    </div>
-    <div class="col-lg-2 item-details-price">
-      ${{item.product.price}}
-    </div>
-    <div class="col-lg-2 item-details-quantity">
-      <div class="product-quantity">
-        <input type="button" (click)="minus()" value="-" class="minus button is-form">
-        <input type="number" value="{{item.quantity_order}}" class="input-text qty text" step="1" name="quantity">
-        <input type="button" (click)="pushToCart(item)" value="+" class="plus button is-form">
+<mat-horizontal-stepper #stepper >
+  <mat-step>
+    <form [formGroup]="firstFormGroup" class="cart row">
+      <ng-template matStepLabel>SHOPPING CART</ng-template>
+      <div class="col-lg-8 col-sm-12">
+        <table *ngIf="itemsInCart.length > 0" class="item-details col-lg-12 col-sm-12 row">
+          <div class="col-lg-12 row item-details-title">
+            <th style="width: 50%">PRODUCT</th>
+            <th style="width: 15%; text-align: left">PRICE</th>
+            <th style="width: 15%; text-align: center">QUANTITY</th>
+            <th style="width: 20%; text-align: right">SUBTOTAL</th>
+          </div>
+          <tr *ngFor="let item of itemsInCart" class="col-lg-12 col-sm-12 item-details-content row">
+            <td class="row item-details-img">
+              <button class="delete" (click)="delete(item)">&times;</button>
+              <img src="{{item.product_img[0].image_url}}">
+              <div class="item-details-name">
+                {{item.product_name}}
+              </div>
+            </td>
+            <td class="item-details-price">
+              ${{item.price}}
+            </td>
+            <td class="item-details-quantity">
+              <div class="product-quantity">
+                <input type="button" (click)="minus()" value="-" class="minus button is-form">
+                <input type="number" value="{{item.quantity_order}}" class="input-text qty text" step="1"
+                       name="quantity">
+                <input type="button" (click)="pushToCart(item)" value="+" class="plus button is-form">
+              </div>
+            </td>
+            <td class="item-details-price">
+              ${{item.price * item.quantity_order}}
+            </td>
+          </tr>
+        </table>
+        <div class="cart-button">
+          <button class="btn mr-4 rounded-0" [routerLink]="['/home']">
+            &larr; CONTINUE SHOPPING
+          </button>
+          <button class="btn updated rounded-0 update">UPDATE CART</button>
+        </div>
+        <p>You may be interested in…</p>
+        <div class="col-lg-12 col-sm-12 row cart-update">
+          <div class="col-lg-4 col-sm-6" style="padding-left: 0; margin-bottom: 20px" *ngFor="let item of itemsInCart">
+            <div *ngIf="item.product_img[1]">
+              <img src="{{item.product_img[1].image_url}}">
+            <div class="cart-update-name">
+              <p>{{item.product_name}}</p>
+            </div>
+            <div class="cart-update-price">${{item.price}}</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col-lg-2 item-details-price">
-      ${{item.subtotal}}
-    </div>
-    <div (click)="delete(item)">&times;</div>
+      <div class="col-lg-4 col-sm-12">
+        <div class="total-detail">
+          <p class="total-title">CART TOTALS</p>
+          <mat-divider
+            style="border-bottom: 2px solid rgba(120,120,120,.7); margin-bottom: 20px"
+          ></mat-divider>
+          <div class="subtotal">
+            <p>Subtotal</p>
+            <p class="sub-money">${{subtotal}}</p>
+          </div>
+          <mat-divider style="margin-bottom: 5px"></mat-divider>
+          <div class="shipping">
+            <p>Shipping</p>
+            <p class="shipping-text">
+              Enter your address to view shipping options. <br/>
+              <a href="#"> Calculate shipping </a>
+            </p>
+          </div>
+          <mat-divider style="margin-bottom: 5px"></mat-divider>
+          <div class="total">
+            <p>Total</p>
+            <p class="total-money">${{subtotal}}</p>
+          </div>
+          <mat-divider
+            style="margin-bottom: 5px"
+          ></mat-divider>
+          <!--        <button mat-button matStepperNext (click)="orderProduct()">PROCESS TO CHECKOUT</button>-->
+          <button
+            mat-button
+            (click)="orderProduct()"
+            [disabled]="subtotal === 0"
+            class="btn btn-block shadow-none mt-3 mb-3 rounded-0 checkout"
+            matStepperNext>
+            PROCEED TO CHECKOUT
+          </button>
+          <div class="coupon mb-3">
+            <span> <i class="fas fa-tag"></i> coupon</span>
+          </div>
+          <mat-divider
+            style="border-bottom: 3px solid rgb(170, 169, 169)"
+          ></mat-divider>
+          <input
+            type="text"
+            placeholder="coupon code"
+            class="form-control mt-3 shadow-none rounded-0"
+          />
+          <button class=" btn btn-outline-secondary btn-block shadow-none mt-3 mb-3rounded-0">
+            Apply coupon
+          </button>
+        </div>
+      </div>
+    </form>
 
-  </div>
-</div>
-<div><h3>${{total}}</h3></div>
-<button routerLink="/checkout">PROCESS TO CHECKOUT</button>
+  </mat-step>
+  <mat-step label="Fill out your address">
+    <form [formGroup]="secondFormGroup" >
+      <ng-template matStepLabel>CHECKOUT DETAILS</ng-template>
+      <app-checkout></app-checkout>
+    </form>
+  </mat-step>
+  <mat-step routerLink="/orders">
+    <ng-template matStepLabel>ORDER COMPLETE</ng-template>
+    <p>Please click order in Cart!</p>
+  </mat-step>
+</mat-horizontal-stepper>

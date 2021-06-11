@@ -1,5 +1,7 @@
 @import "../../../variable";
-
+::ng-deep .mat-drawer-content{
+  margin: 0 auto;
+}
 .product-details {
   position: relative;
   overflow: hidden;
@@ -167,5 +169,49 @@
         }
       }
     }
+  }
+
+  @media screen and (max-width: 768px){
+    .btn-next, .btn-prev {
+      display: none;
+    }
+    ::ng-deep .slick-arrow {
+      width: 35px;
+      height: 35px;
+      padding: 5px;
+      z-index: 2;
+      position: absolute;
+      background: transparent;
+      color: $color-text-product;
+      transition: all .3s ease-in-out;
+      &:hover {
+        background: $background-color;
+        color: $color-default;
+      }
+      &:before {
+        color: $color-text-product;
+        font-size: 24px;
+      }
+    }
+    ::ng-deep .slick-prev {
+      left: 0;
+    }
+    ::ng-deep .slick-next {
+      right: 0;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .product-details-sub {
+      img {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px){
+  ::ng-deep .mat-drawer-content{
+    width: 100% !important;
   }
 }
