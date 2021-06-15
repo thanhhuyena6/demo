@@ -1,8 +1,8 @@
 <div *ngIf="itemsOrders.length > 0" class="order-detai container">
   <div *ngFor="let item of itemsOrders" class="row">
     <div *ngFor="let product of item.products" class="order-product">
-      <p>{{product.name}} x {{product.quantity}}</p>
-      <p>đ{{product.price * product.quantity}}</p>
+      <p>{{product.name}} x {{product.pivot.quantity}}</p>
+      <p>đ{{product.pivot.price * product.pivot.quantity}}</p>
     </div>
     <div class="order-price">
       <p>Tổng tiền hàng : <span>đ{{item.total_price}}</span></p>

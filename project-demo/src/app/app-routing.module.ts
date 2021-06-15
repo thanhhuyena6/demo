@@ -66,6 +66,11 @@ const routes: Routes = [
     canActivate: [UserAuthGuard],
   },
   {
+    path : 'checkout',
+    component: CheckoutComponent,
+    canActivate: [UserAuthGuard],
+  },
+  {
     path : 'cart',
     component: CartComponent,
     // resolve: {

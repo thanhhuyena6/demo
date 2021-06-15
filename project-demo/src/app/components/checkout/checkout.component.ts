@@ -23,6 +23,7 @@ export class CheckoutComponent implements OnInit {
   items: any;
   itemsOrder: any;
   name_total: any;
+  toggle:any;
   subtotal: number = 0;
   total_price_product: number = 0;
   total_price: number = 0;
@@ -37,7 +38,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    // this.arrayCart = localStorage.getItem('arrayCart');
+    // this.itemsInCart = JSON.parse(this.arrayCart);
+    // this.itemsInCartOrder = this.itemsInCart;
+    // this.itemsInCartOrder.forEach((element: any) => {
+    //   this.subtotal = element.price * element.quantity_order;
+    //   this.total_price_product += element.price * element.quantity_order;
+    // })
+    // this.itemsInCart.push(this.total_price)
     this.checkoutForm = this.fb.group({
       email_address: new FormControl(null, Validators.required),
       firstname: new FormControl(null, Validators.required),
@@ -46,37 +54,40 @@ export class CheckoutComponent implements OnInit {
       phone: new FormControl(null, Validators.required),
 
     });
-    this.common.checkout.subscribe((value:any) => {
+    this.common.checkout.subscribe((toggle:any) => {
+      let total_price_product = 0;
       this.getChange();
-      console.log(this.getChange())
+      for (let i = 0; i < this.itemsInCart.length ; i++) {
+        total_price_product += (this.itemsInCart[i].price * this.itemsInCart[i].quantity_order);
+      }
+      this.total_price_product = total_price_product;
+      this.itemsOrder = {
+        checkoutForm: [this.checkoutForm.value],
+        itemsInCart: this.itemsInCart,
+        total_price: this.total_price_product
+      }
+
     })
-    this.itemsOrder = {
-      checkoutForm: [this.checkoutForm.value],
-      itemsInCart: this.itemsInCart,
-      total_price: this.total_price_product
-    }
-
-
 
   }
 
   getChange() {
     this.arrayCart = localStorage.getItem('arrayCart');
     this.itemsInCart = JSON.parse(this.arrayCart);
-    this.itemsInCart.forEach((element: any) => {
-      this.subtotal = element.price * element.quantity_order;
-      this.total_price_product += element.price * element.quantity_order;
-    })
-    // this.itemsInCart.push(this.total_price)
-    console.log(this.itemsInCart)
+    // this.itemsInCart.forEach((element: any) => {
+    //   this.subtotal = element.price * element.quantity_order;
+    //   this.total_price_product += element.price * element.quantity_order;
+    // })
+    // this.itemsInCart.forEach((element: any) => {
+    //   this.subtotal = element.price * element.quantity_order;
+    //   this.total_price_product += element.price * element.quantity_order;
+    // })
 
-    // this.itemsOrder = {
-    //   checkoutForm: [this.checkoutForm.value],
-    //   itemsInCart: this.itemsInCart,
-    //   total_price: this.total_price_product
-    // }
-    // console.log(this.itemsOrder)
-
+    this.itemsOrder = {
+      checkoutForm: [this.checkoutForm.value],
+      itemsInCart: this.itemsInCart,
+      total_price: this.total_price_product
+    }
   }
 
 
@@ -89,9 +100,8 @@ export class CheckoutComponent implements OnInit {
         this.common.orderId.next(this.orderId);
         this.common.remove.next(0);
         this.messageError = '';
-        this._snackBar.open(res.message, 'OK');
-      }, error => {
-
+        localStorage.removeItem('arrayCart');
+        this._snackBar.open('Please click order below Cart!', 'OK');
       }
     )
   }

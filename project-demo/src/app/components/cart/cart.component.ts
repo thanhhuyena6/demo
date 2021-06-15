@@ -83,7 +83,7 @@ export class CartComponent implements OnInit {
         console.log(res)
         this.messageError = '';
         this._snackBar.open('Please fill form',  'OK');
-        this.common.checkout.next(this.value);
+        this.common.checkout.next('checkout');
       }
     )
   }
@@ -105,7 +105,6 @@ export class CartComponent implements OnInit {
     this.itemsInCart.map((element: any) => {
       valueCartDelete += element.quantity_order;
     })
-    console.log(this.itemsInCart)
     this.itemsInCart.forEach((element: any) => {
       this.totalPriceUpdate += element.price * element.quantity_order;
       this.subtotal = this.totalPriceUpdate;
