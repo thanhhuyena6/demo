@@ -7,6 +7,7 @@ import {AlertService} from "../../../services/alert/alert.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {MatDialogRef} from "@angular/material/dialog";
 import {AuthComponent} from "../auth/auth.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
               public dialogRef: MatDialogRef<AuthComponent>,
               private cartService: CartService,
               private fb: FormBuilder,
+              private _snackBar: MatSnackBar,
               private modalService: BsModalService,
               private alertService: AlertService) {
     // if (this.authService.isLoggedIn()){
@@ -41,23 +43,27 @@ export class LoginComponent implements OnInit {
 
   userLogin() {
     this.authService.login(this.authCredentialsDto.value).subscribe(
-      res => {
+      (res) => {
         console.log(res)
-        localStorage.setItem('token', res.access_token);
-        // this.authService.prepareUserData();
-        this.messageError = '';
-        this.dialogRef.close('success');
-        this.router.navigate([`/home`]);
-      },
-      error => {
-        this.alertService.error(error);
-        this.openModal(this.invalidCredentialsTemp);
+        if (res.access_token !== undefined) {
+          localStorage.setItem('token', res.access_token);
+          this.messageError = res.message;
+          this._snackBar.open(res.message, 'OK');
+          this.dialogRef.close('success');
+          this.router.navigate([`/home`]);
+        } else {
+          this.messageError = res.error;
+          this._snackBar.open(this.messageError, 'Try Again!');
+        }
       }
     );
   }
 
-  openModal(template: TemplateRef<any>){
-    this.modalRef = this.modalService.show(template);
+  // openModal(template: TemplateRef<any>){
+  //   this.modalRef = this.modalService.show(template);
+  // }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
   hide(){
     this.modalRef.hide();

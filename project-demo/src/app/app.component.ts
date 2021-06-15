@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe(event => {
         this.currentRoute = event.url;
-        console.log(this.currentRoute)
         if (this.currentRoute === '/home'){
             this.opened = true;
           $("mat-sidenav-content").removeClass("col-lg-12 col-md-12 col-sm-12")
@@ -69,22 +68,13 @@ export class AppComponent implements OnInit {
     })
   }
 
-  // viewProductDetails(product: Product){
-  //   this.router.navigate(['products', product.id], {
-  //     // queryParams: {
-  //     //   Name: product.name
-  //     // }
-  //   })
-  // }
+
 
 
   prepareCategories() {
     this.categoryService.getCategories()
       .subscribe((resData: any) => {
-        console.log(resData.data)
         this.categories = resData.data;
-        console.log(this.categories)
-
       })
   }
 

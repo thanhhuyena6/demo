@@ -28,17 +28,12 @@ export class ProductListComponent implements OnInit {
       if (params.get('id')){
         this.productService.getProductById(params.get('id'))
           .subscribe((res:any) => {
-            console.log(res.data)
             this.item = res.data
           })
       }
-      // else {
-      //   router.navigate(['/home'])
-      // }
     })
     if (route.snapshot.data.products) {
       this.products = route.snapshot.data.products;
-      // console.log(this.products)
     }
   }
 
@@ -52,7 +47,6 @@ export class ProductListComponent implements OnInit {
     if (this.authService.cartItem){
       this.productService.insertToCart(productId, this.authService.cartItem.id,quantity)
         .subscribe(res => {
-
         })
     }
   }

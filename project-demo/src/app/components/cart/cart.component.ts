@@ -82,9 +82,8 @@ export class CartComponent implements OnInit {
       (res: any) => {
         console.log(res)
         this.messageError = '';
-        this._snackBar.open(res.message, 'OK');
-      }, error => {
-
+        this._snackBar.open('Please fill form',  'OK');
+        this.common.checkout.next(this.value);
       }
     )
   }

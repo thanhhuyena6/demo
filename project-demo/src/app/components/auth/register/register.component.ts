@@ -34,15 +34,6 @@ export class RegisterComponent implements OnInit {
     this.registrationForm = this.fb.group({
         email_address: new FormControl(null, Validators.required),
         password: new FormControl(null, Validators.required)
-      // authCredentialsDto: new FormGroup({
-      //   email_address: new FormControl(null, Validators.required),
-      //   password: new FormControl(null)
-      // }),
-      // createProfileDto: new FormGroup({
-      //   firstname: new FormControl(null, Validators.required),
-      //   lastname: new FormControl(null, Validators.required),
-      //   displayname: new FormControl(null, Validators.required),
-      // })
     });
   }
 
@@ -50,24 +41,13 @@ export class RegisterComponent implements OnInit {
     this.authService.registerUser(this.registrationForm.value).subscribe(
       (res : any) => {
         console.log(res)
-        this.messageError = '';
-        this._snackBar.open(res.message, 'OK');
-        // this.authService.login(this.registrationForm.value).subscribe(
-        //   resToken => {
-        //     localStorage.setItem('token', resToken.access_token);
-        //     this.authService.prepareUserData();
-        //     // this.authService.getCurrentUser().subscribe(
-        //     //   resUser => {
-        //     //     this.authService.currentUser = resUser;
-        //     //   }
-        //     // );
-        //     this.router.navigate([`/home`]);
-        //   }, error => {
-        //     console.log(error);
-        //   }
-        // )
+        if (res.data){
+          this.messageError = '';
+          this._snackBar.open(res.message, 'OK');
+        }
       }, error => {
-
+        console.log(error)
+        this._snackBar.open( 'Username already exists','Try Again!');
       }
     )
   }
