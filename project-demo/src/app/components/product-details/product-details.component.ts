@@ -48,7 +48,6 @@ export class ProductDetailsComponent implements OnInit {
       if (params.get('id')) {
         this.productService.getProductDetailById(params.get('id'))
           .subscribe((resProduct:any) => {
-            console.log(resProduct.data);
             this.product = resProduct.data[0];
           })
       }
@@ -59,15 +58,13 @@ export class ProductDetailsComponent implements OnInit {
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
-    // nextArrow: '<button class="btn-next" (click)="next()"></button>\n',
-    // prevArrow: '<button class="btn-prev" (click)="prev()">prev</button>\n',
     arrows: true,
     focusOnSelect: true,
   };
 
   ngOnInit(): void {
-    this.arrayCart = localStorage.getItem('arrayCart');
-    this.arrayCartParse = JSON.parse(this.arrayCart);
+    // this.arrayCart = localStorage.getItem('arrayCart');
+    // this.arrayCartParse = JSON.parse(this.arrayCart);
 
   }
 

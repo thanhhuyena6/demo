@@ -31,12 +31,8 @@ export class CategoryListComponent implements OnInit {
             this.item = res.data
           })
       }
-      // else {
-      //   router.navigate(['/home'])
-      // }
     })
     if (this.route.snapshot.data.categories) {
-      console.log(this.route.snapshot.data.categories.data)
       this.categories = this.route.snapshot.data.categories.data;
 
     }

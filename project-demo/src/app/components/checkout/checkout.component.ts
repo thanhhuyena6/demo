@@ -37,15 +37,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.arrayCart = localStorage.getItem('arrayCart');
-    this.itemsInCart = JSON.parse(this.arrayCart);
-    this.itemsInCartOrder = this.itemsInCart;
-    this.itemsInCartOrder.forEach((element: any) => {
-      this.subtotal = element.price * element.quantity_order;
-      this.total_price_product += element.price * element.quantity_order;
-    })
-    // this.itemsInCart.push(this.total_price)
-    console.log(this.itemsInCart)
+
     this.checkoutForm = this.fb.group({
       email_address: new FormControl(null, Validators.required),
       firstname: new FormControl(null, Validators.required),
@@ -54,21 +46,37 @@ export class CheckoutComponent implements OnInit {
       phone: new FormControl(null, Validators.required),
 
     });
+    this.common.checkout.subscribe((value:any) => {
+      this.getChange();
+      console.log(this.getChange())
+    })
     this.itemsOrder = {
       checkoutForm: [this.checkoutForm.value],
       itemsInCart: this.itemsInCart,
       total_price: this.total_price_product
     }
+
+
 
   }
 
   getChange() {
-    this.itemsOrder = {
-      checkoutForm: [this.checkoutForm.value],
-      itemsInCart: this.itemsInCart,
-      total_price: this.total_price_product
-    }
-    console.log(this.itemsOrder)
+    this.arrayCart = localStorage.getItem('arrayCart');
+    this.itemsInCart = JSON.parse(this.arrayCart);
+    this.itemsInCart.forEach((element: any) => {
+      this.subtotal = element.price * element.quantity_order;
+      this.total_price_product += element.price * element.quantity_order;
+    })
+    // this.itemsInCart.push(this.total_price)
+    console.log(this.itemsInCart)
+
+    // this.itemsOrder = {
+    //   checkoutForm: [this.checkoutForm.value],
+    //   itemsInCart: this.itemsInCart,
+    //   total_price: this.total_price_product
+    // }
+    // console.log(this.itemsOrder)
+
   }
 
 
