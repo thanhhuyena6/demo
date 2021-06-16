@@ -1,11 +1,11 @@
 <div *ngIf="itemsOrders.length > 0" class="orders">
   <table>
-    <tr *ngFor="let item of itemsOrders" class="row">
+    <tr *ngFor="let item of itemsOrders" class="order-item">
       <td>{{item.phone}}</td>
       <td>{{item.delivery_date}}</td>
       <td>
         <div *ngFor="let product of item.products">
-        <p style="display: block">{{product.name}}</p>
+        <p class="order-name" style="display: block">{{product.name}}</p>
         </div>
       </td>
       <td>{{item.total_price}}đ</td>

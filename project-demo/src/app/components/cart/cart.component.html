@@ -4,33 +4,33 @@
       <ng-template matStepLabel>SHOPPING CART</ng-template>
       <div class="col-lg-8 col-sm-12">
         <table *ngIf="itemsInCart.length > 0" class="item-details col-lg-12 col-sm-12 row">
-          <div class="col-lg-12 row item-details-title">
+          <div class="item-details-title">
             <th style="width: 50%">PRODUCT</th>
-            <th style="width: 15%; text-align: left">PRICE</th>
-            <th style="width: 15%; text-align: center">QUANTITY</th>
-            <th style="width: 20%; text-align: right">SUBTOTAL</th>
+            <th style="width: 15%; text-align: center ">PRICE</th>
+            <th style="width: 15%; text-align: center ">QUANTITY</th>
+            <th style="width: 20%; text-align: right ">SUBTOTAL</th>
           </div>
-          <tr *ngFor="let item of itemsInCart" class="col-lg-12 col-sm-12 item-details-content row">
-            <td class="row item-details-img">
+          <tr *ngFor="let item of itemsInCart" class="item-details-content">
+            <td class="item-details-img" style="width: 50%">
               <button class="delete" (click)="delete(item)">&times;</button>
               <img src="{{item.product_img[0].image_url}}">
               <div class="item-details-name">
                 {{item.product_name}}
               </div>
             </td>
-            <td class="item-details-price">
-              đ{{item.price}}
+            <td class="item-details-price" style="width: 15%; text-align: center">
+              {{item.price}}đ
             </td>
-            <td class="item-details-quantity">
+            <td class="item-details-quantity" style="width: 15%">
               <div class="product-quantity">
-                <input type="button" (click)="minus()" value="-" class="minus button is-form">
+                <input type="button" (click)="minus(item)" value="-" class="minus button is-form">
                 <input type="number" value="{{item.quantity_order}}" class="input-text qty text" step="1"
                        name="quantity">
                 <input type="button" (click)="pushToCart(item)" value="+" class="plus button is-form">
               </div>
             </td>
-            <td class="item-details-price">
-              đ{{item.price * item.quantity_order}}
+            <td class="item-details-price" style="width: 20%; text-align: right">
+              {{item.price * item.quantity_order}}đ
             </td>
           </tr>
         </table>
@@ -38,7 +38,7 @@
           <button class="btn mr-4 rounded-0" [routerLink]="['/home']">
             &larr; CONTINUE SHOPPING
           </button>
-          <button class="btn updated rounded-0 update">UPDATE CART</button>
+          <button (click)="updateCart()" class="btn updated rounded-0 update">UPDATE CART</button>
         </div>
         <p>You may be interested in…</p>
         <div class="col-lg-12 col-sm-12 row cart-update">
@@ -48,7 +48,7 @@
             <div class="cart-update-name">
               <p>{{item.product_name}}</p>
             </div>
-            <div class="cart-update-price">đ{{item.price}}</div>
+            <div class="cart-update-price">{{item.price}}đ</div>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
           ></mat-divider>
           <div class="subtotal">
             <p>Subtotal</p>
-            <p class="sub-money">đ{{subtotal}}</p>
+            <p class="sub-money">{{subtotal}}đ</p>
           </div>
           <mat-divider style="margin-bottom: 5px"></mat-divider>
           <div class="shipping">
@@ -74,7 +74,7 @@
           <mat-divider style="margin-bottom: 5px"></mat-divider>
           <div class="total">
             <p>Total</p>
-            <p class="total-money">đ{{subtotal}}</p>
+            <p class="total-money">{{subtotal}}đ</p>
           </div>
           <mat-divider
             style="margin-bottom: 5px"

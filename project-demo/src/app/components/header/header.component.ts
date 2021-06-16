@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
   totalPrice: number = 0;
   open: boolean = false;
   productDetails: ProductDetailsComponent;
+  removeClass: any;
+  addClass: any;
 
 
 
@@ -41,16 +43,25 @@ export class HeaderComponent implements OnInit {
     this.common.cartUpdate.subscribe((value:any) => {
       this.cartNumber -= value;
     })
+    this.common.updateCartLast.subscribe((value:any) => {
+      this.cartNumber = value;
+    })
     this.common.totalPrice.subscribe((value:any) => {
       this.totalPrice = value;
     })
     this.common.totalPriceUpdate.subscribe((value:any) => {
       this.totalPrice = value;
     })
+    this.common.updatePriceLast.subscribe((value:any) => {
+      this.totalPrice = value;
+    })
     this.common.remove.subscribe((value:any) => {
       this.cartNumber = value;
       this.totalPrice = value;
     })
+    this.removeClass = ('col-lg-9 col-md-9 col-sm-9');
+    this.addClass = ('col-lg-12 col-md-12 col-sm-12');
+
   }
 
   totalCart(){
@@ -61,6 +72,7 @@ export class HeaderComponent implements OnInit {
 
   toggleSideNav() {
     this.common.toggleSideNav.next(this.open)
+    this.common.removeClass.next(this.removeClass);
   }
 
   checkLogin() {

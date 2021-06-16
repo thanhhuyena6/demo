@@ -17,5 +17,7 @@ export class CommonService {
   public orderId = new BehaviorSubject<any>(0)
   public remove = new BehaviorSubject<any>(0)
   public checkout = new BehaviorSubject<any>(0)
+  public updateCartLast = new BehaviorSubject<any>(0)
+  public updatePriceLast = new BehaviorSubject<any>(0)
   constructor() { }
 }

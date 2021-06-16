@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8817912d-899a-47ac-b4fb-fa60b2d404de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/cart/cart.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/category-details/category-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/category-details/category-details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/checkout/checkout.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders-detail/orders-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders-detail/orders-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/orders/orders.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-details/product-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-details/product-details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-list-sub/product-list-sub.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-list-sub/product-list-sub.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-demo/src/app/components/product-list/product-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-demo/src/app/components/product-list/product-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +48,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="35c36d16-6f44-4a31-9a6b-2d1dd8a7675e" name="Default Changelist" comment="" />
+      <changelist id="8817912d-899a-47ac-b4fb-fa60b2d404de" name="Default Changelist" comment="" />
       <created>1622081829229</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -90,6 +80,7 @@
       <workItem from="1623288889432" duration="42598000" />
       <workItem from="1623376695151" duration="147000" />
       <workItem from="1623380603627" duration="19687000" />
+      <workItem from="1623809306319" duration="614000" />
     </task>
     <servers />
   </component>

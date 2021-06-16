@@ -1,6 +1,8 @@
 .order-detai {
   width: 100%;
-  .row{
+  .order-detai-item{
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     .order-product {
       display: flex;
@@ -10,17 +12,14 @@
       border-bottom: 1px solid #ccc;
       margin-bottom: 10px;
       p {
-        font-size: 18px;
-        //&:last-child {
-        //  color: #D26E4B;
-        //}
+        font-size: 20px;
       }
     }
     .order-price {
       text-align: right;
       width: 100%;
       p {
-        font-size: 14px;
+        font-size: 16px;
         color: #555555;
         span {
           color: #111;
