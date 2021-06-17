@@ -4,7 +4,7 @@
       <td>{{item.phone}}</td>
       <td>{{item.delivery_date}}</td>
       <td>
-        <div *ngFor="let product of item.products">
+        <div *ngFor="let product of item.products" class="order-product">
         <p class="order-name" style="display: block">{{product.name}}</p>
         </div>
       </td>

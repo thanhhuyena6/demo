@@ -20,9 +20,11 @@ import {CartResolverService} from "./resolvers/cart-resolver.service";
 import {AddressComponent} from "./components/profile/address/address.component";
 import {AccountDetailsComponent} from "./components/profile/account-details/account-details.component";
 import {OrdersDetailComponent} from "./components/orders/orders-detail/orders-detail.component";
-import {AdminComponent} from "./admin/components/admin/admin.component";
-import {AdminLoginComponent} from "./admin/components/admin-login/admin-login.component";
-import {SidebarComponent} from "./admin/components/sidebar/sidebar.component";
+import {AdminComponent} from "./admin/admin.component";
+import {AdminLoginComponent} from "./admin/admin-login/admin-login.component";
+import {SidebarComponent} from "./admin/sidebar/sidebar.component";
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
 
 const routes: Routes = [
   // {
@@ -156,7 +158,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

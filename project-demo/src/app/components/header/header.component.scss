@@ -78,6 +78,7 @@
 .cart-order {
   position: relative;
   .order {
+    z-index: 5;
     position: absolute;
     top: 100%;
     right: 0;

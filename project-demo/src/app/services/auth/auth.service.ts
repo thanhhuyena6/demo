@@ -27,6 +27,7 @@ export class AuthService {
   authen = this.authenSubject.asObservable();
   _registerUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/register`;
   _loginUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/login`;
+  _adminLoginUrl = `https://project-demo-gumi.herokuapp.com/api/admin/login`;
   _logoutUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/logout`;
   _profileUrl = `http://project-demo-gumi.herokuapp.com/api/home/user/show`;
   _updateUrl = `https://project-demo-gumi.herokuapp.com/api/home/user/update`;
@@ -73,6 +74,9 @@ export class AuthService {
 
   login(user: any): Observable<any> {
     return this.http.post<any>(this._loginUrl, user);
+  }
+  adminLogin(user: any): Observable<any> {
+    return this.http.post<any>(this._adminLoginUrl, user);
   }
 
   getUserProfile(): Observable<Profile> {

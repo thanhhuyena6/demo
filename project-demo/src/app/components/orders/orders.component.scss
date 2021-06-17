@@ -25,12 +25,16 @@
         @media screen and (max-width: 768px) {
           width: 50%;
         }
-        p {
-          display: block;
-          width: 100%;
-        }
-        .order-name {
-          margin-bottom: 0;
+        .order-product{
+          p {
+            display: block;
+            width: 100%;
+          }
+          &:last-child {
+            p {
+              margin-bottom: 0;
+            }
+          }
         }
       }
       td:first-child {

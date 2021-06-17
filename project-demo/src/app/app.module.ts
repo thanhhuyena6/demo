@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BreadcrumbModule} from "angular-crumbs";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { RouterModule } from '@angular/router';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
@@ -42,6 +43,10 @@ import { NavComponent } from './components/nav/nav.component';
 import { AccountDetailsComponent } from './components/profile/account-details/account-details.component';
 import { AddressComponent } from './components/profile/address/address.component';
 import { OrdersDetailComponent } from './components/orders/orders-detail/orders-detail.component';
+import {AdminComponent} from './admin/admin.component';
+import {AdminLoginComponent} from './admin/admin-login/admin-login.component';
+import {SidebarComponent} from './admin/sidebar/sidebar.component';
+import { ListAdminComponent } from './admin/list-admin/list-admin.component';
 
 
 @NgModule({
@@ -73,6 +78,10 @@ import { OrdersDetailComponent } from './components/orders/orders-detail/orders-
     AccountDetailsComponent,
     AddressComponent,
     OrdersDetailComponent,
+    AdminComponent,
+    AdminLoginComponent,
+    SidebarComponent,
+    ListAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,6 +95,7 @@ import { OrdersDetailComponent } from './components/orders/orders-detail/orders-
     ReactiveFormsModule,
     FileModule,
     SlickCarouselModule,
+    RouterModule,
   ],
   providers: [MenuService,
     // {

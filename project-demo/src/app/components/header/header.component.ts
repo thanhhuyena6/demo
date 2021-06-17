@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   productDetails: ProductDetailsComponent;
   removeClass: any;
   addClass: any;
+  noHidden: boolean = true;
 
 
 
@@ -37,6 +38,12 @@ export class HeaderComponent implements OnInit {
     this.authService.authen.subscribe((res) => {
       this.loginSuccess = res;
     });
+    this.common.hidden.subscribe((hidden:any) => {
+      this.noHidden = false;
+    })
+    this.common.noHidden.subscribe((hidden:any) => {
+      this.noHidden = true;
+    })
     this.common.cartNumber.subscribe((count:any) => {
       this.cartNumber += count;
     })

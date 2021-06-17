@@ -8,7 +8,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" *ngIf="noHidden">
         <li class="nav-item">
           <a *ngIf="!loginSuccess" (click)="openDialog()" routerLink="/" class="nav-link">LOGIN </a>
           <a *ngIf="loginSuccess" (click)="toggleSideNav()" class="nav-link" routerLink='/profile' routerLinkActive="active"

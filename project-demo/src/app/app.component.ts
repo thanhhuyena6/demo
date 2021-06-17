@@ -47,9 +47,13 @@ export class AppComponent implements OnInit {
             this.opened = true;
           $("mat-sidenav-content").removeClass("col-lg-12 col-md-12 col-sm-12")
             .addClass(this.classDefault);
+          this.common.noHidden.next('nohidden')
         }
-        if (this.currentRoute === '/admin' || this.currentRoute === '/admin/dashboard'){
+        if (this.currentRoute === '/admin' || this.currentRoute === '/admin/sidebar'){
           this.opened = false;
+          $("mat-sidenav-content").removeClass(this.classDefault)
+            .addClass("col-lg-12 col-md-12 col-sm-12");
+          this.common.hidden.next('hidden')
         }
       });
   }

@@ -1,4 +1,4 @@
-<div *ngIf="itemsOrders.length > 0" class="order-detai container">
+<div *ngIf="itemsOrders.length > 0" class="order-detai">
   <div *ngFor="let item of itemsOrders" class="order-detai-item">
     <div *ngFor="let product of item.products" class="order-product">
       <p>{{product.name}} x {{product.pivot.quantity}}</p>
