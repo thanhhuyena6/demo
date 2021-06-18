@@ -21,11 +21,8 @@ export class OrdersDetailComponent implements OnInit {
   ngOnInit(): void {
     this.common.orderId.subscribe((value:any) =>{
       this.orderId = value;
-      console.log(this.orderId)
     })
     this.showOrders();
-    console.log(this.itemsOrders.products)
-    console.log(this.itemsOrders.total_price)
   }
 
   showOrders() {

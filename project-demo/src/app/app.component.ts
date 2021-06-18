@@ -49,7 +49,8 @@ export class AppComponent implements OnInit {
             .addClass(this.classDefault);
           this.common.noHidden.next('nohidden')
         }
-        if (this.currentRoute === '/admin' || this.currentRoute === '/admin/sidebar'){
+        if (this.currentRoute === '/admin' || this.currentRoute === '/admin/sidebar' ||
+          this.currentRoute === '/admin/sidebar/list-admin' || this.currentRoute === '/admin/sidebar/dashboard'){
           this.opened = false;
           $("mat-sidenav-content").removeClass(this.classDefault)
             .addClass("col-lg-12 col-md-12 col-sm-12");

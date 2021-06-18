@@ -1,6 +1,59 @@
-<mat-tab-group mat-align-tabs="start">
-  <mat-tab label="First"><app-list-admin></app-list-admin></mat-tab>
-  <mat-tab label="Second">Content 2</mat-tab>
-  <mat-tab label="Third">Content 3</mat-tab>
-  <mat-tab label="Four">Content 4</mat-tab>
-</mat-tab-group>
+<!--<mat-tab-group mat-align-tabs="start">-->
+<!--  <mat-tab label="First"><app-list-admin></app-list-admin></mat-tab>-->
+<!--  <mat-tab label="Second">Content 2</mat-tab>-->
+<!--  <mat-tab label="Third">Content 3</mat-tab>-->
+<!--  <mat-tab label="Four">Content 4</mat-tab>-->
+<!--</mat-tab-group>-->
+<div class="container">
+  <div class="row sidebar">
+    <div class="col-lg-3 col-md-4 col-sm-6 sidebar-title">
+      <div
+        class="nav flex-column nav-pills"
+        id="v-pills-tab"
+        role="tablist"
+        aria-orientation="vertical"
+      >
+        <a
+          class="nav-link active"
+          id="v-pills-home-tab"
+          data-toggle="pill"
+          routerLink='/admin/sidebar/dashboard'
+          role="tab"
+          aria-controls="v-pills-home"
+          aria-selected="true">DASHBOARD</a>
+        <mat-divider></mat-divider>
+        <a
+          class="nav-link"
+          id="v-pills-admin-tab"
+          data-toggle="pill"
+          routerLink='/admin/sidebar/list-admin'
+          role="tab"
+          aria-controls="v-pills-admin"
+          aria-selected="false">LIST ADMIN</a>
+        <mat-divider></mat-divider>
+        <a
+          class="nav-link"
+          id="v-pills-user-tab"
+          data-toggle="pill"
+          routerLink='/admin/sidebar/list-user'
+          role="tab"
+          aria-controls="v-pills-user"
+          aria-selected="false">LIST USER</a>
+        <mat-divider></mat-divider>
+        <a
+          class="nav-link"
+          id="v-pills-profile-tab"
+          data-toggle="pill"
+          routerLink='/admin/sidebar/list-user'
+          role="tab"
+          aria-controls="v-pills-profile"
+          aria-selected="false"
+          >LOG OUT</a>
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-6 profile-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

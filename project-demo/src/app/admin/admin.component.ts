@@ -9,14 +9,10 @@ import {AdminListService} from '../services/admin/admin-list.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
-              private adminService: AdminListService,
-              private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.adminService.getAdmin().subscribe((res:any) => {
-      console.log(res);
-    })
+
   }
 
 }

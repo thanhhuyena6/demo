@@ -21,5 +21,7 @@ export class CommonService {
   public updatePriceLast = new BehaviorSubject<any>(0)
   public hidden = new BehaviorSubject<any>(0);
   public noHidden = new BehaviorSubject<any>(0);
+  public loadAdmin = new BehaviorSubject<any>(0)
+  public getAdminId = new BehaviorSubject<any>(0)
   constructor() { }
 }

@@ -25,6 +25,9 @@ import {AdminLoginComponent} from "./admin/admin-login/admin-login.component";
 import {SidebarComponent} from "./admin/sidebar/sidebar.component";
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
+import {ListAdminComponent} from './admin/sidebar/list-admin/list-admin.component';
+import {DashboardComponent} from './admin/sidebar/dashboard/dashboard.component';
+import {ListUserComponent} from './admin/sidebar/list-user/list-user.component';
 
 const routes: Routes = [
   // {
@@ -147,7 +150,21 @@ const routes: Routes = [
       {
         path: 'sidebar',
         component: SidebarComponent,
-
+        children: [
+            {
+              path: '',
+              component: DashboardComponent,
+              pathMatch: 'full',
+            },
+          {
+            path: 'list-admin',
+            component: ListAdminComponent,
+          },
+          {
+            path: 'list-user',
+            component: ListUserComponent,
+          },
+        ],
       },
     ],
   },

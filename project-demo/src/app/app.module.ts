@@ -46,7 +46,10 @@ import { OrdersDetailComponent } from './components/orders/orders-detail/orders-
 import {AdminComponent} from './admin/admin.component';
 import {AdminLoginComponent} from './admin/admin-login/admin-login.component';
 import {SidebarComponent} from './admin/sidebar/sidebar.component';
-import { ListAdminComponent } from './admin/list-admin/list-admin.component';
+import { ListAdminComponent } from './admin/sidebar/list-admin/list-admin.component';
+import { ListUserComponent } from './admin/sidebar/list-user/list-user.component';
+import { CreateAdminComponent } from './admin/sidebar/create-admin/create-admin.component';
+import { UpdateAdminComponent } from './admin/sidebar/update-admin/update-admin.component';
 
 
 @NgModule({
@@ -82,6 +85,9 @@ import { ListAdminComponent } from './admin/list-admin/list-admin.component';
     AdminLoginComponent,
     SidebarComponent,
     ListAdminComponent,
+    ListUserComponent,
+    CreateAdminComponent,
+    UpdateAdminComponent,
   ],
   imports: [
     BrowserModule,
