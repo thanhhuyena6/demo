@@ -33,7 +33,8 @@ export class CategoryListComponent implements OnInit {
       }
     })
     if (this.route.snapshot.data.categories) {
-      this.categories = this.route.snapshot.data.categories.data;
+      console.log(this.route.snapshot.data.categories.data.data);
+      this.categories = this.route.snapshot.data.categories.data.data;
 
     }
   }

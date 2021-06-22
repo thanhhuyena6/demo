@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Injectable, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -10,6 +10,12 @@ import {CommonService} from '../../../services/common.service';
 import {UpdateAdminComponent} from '../update-admin/update-admin.component';
 import {MatSort} from '@angular/material/sort';
 import {DialogComponent} from '../../../shared/dialog/dialog.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+@Injectable({
+  providedIn: 'root'
+})
+
 
 @Component({
   selector: 'app-list-admin',
@@ -17,40 +23,49 @@ import {DialogComponent} from '../../../shared/dialog/dialog.component';
   styleUrls: ['./list-admin.component.scss']
 })
 
+
 export class ListAdminComponent implements OnInit {
+  PageEvent: PageEvent;
+  listAdmin: any[] = [];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource();
+  length: number;
+  current_page: number = 1;
+  displayedColumns: any[] = ['position', 'name', 'weight', 'symbol', 'action'];
+  dataSource = new MatTableDataSource(this.listAdmin);
 
   constructor(private route: ActivatedRoute,
               private adminService: AdminListService,
-              private authService: AdminListService,
               private dialog: MatDialog,
+              private _snackBar: MatSnackBar,
               private common: CommonService,
               private router: Router) {
-    this.dataSource = new MatTableDataSource();
   }
 
   ngOnInit(): void {
-    this.adminService.getAdmin().subscribe((res: any) => {
-      this.dataSource = res.data;
-    });
+    this.getAdmin();
     this.dataSource.paginator = this.paginator;
     this.common.loadAdmin.subscribe((value: any) => {
-      this.adminService.getAdmin().subscribe((res: any) => {
-        this.dataSource = res.data;
-      });
+      this.getAdmin();
     });
+    this.dataSource.paginator = this.paginator;
+  }
 
+  getAdmin(){
+    let paginator = '?&page=' + this.current_page;
+    this.adminService.getAdmin(paginator).subscribe((res: any) => {
+      this.dataSource.data = res.data.data;
+      this.listAdmin = res.data.data;
+      this.length = res.data.total;
+      this.current_page = res.data.current_page;
+    });
   }
 
 
   checkLoginAdmin() {
     if (localStorage.getItem('tokenAdmin')) {
-      this.authService.isAuthen(true);
+      this.adminService.isAuthen(true);
     } else {
-      this.authService.isAuthen(false);
+      this.adminService.isAuthen(false);
     }
 
   }
@@ -77,15 +92,21 @@ export class ListAdminComponent implements OnInit {
           cancelButton: 'No',
         },
       }).afterClosed().subscribe((res) => {
-        if (res) {
-          this.adminService.deleteAdmin(id).subscribe((data) => {
-            // this.common.loadAdmin.next('loadAdmin')
-            this.adminService.getAdmin().subscribe((res: any) => {
-              this.dataSource = res.data;
-            });
+      if (res) {
+          this.adminService.deleteAdmin(id).subscribe((res:any) => {
+            this.getAdmin();
+            this._snackBar.open(res.message, 'OK');
           });
+
         }
       });
+  }
+
+  changePage(e:any){
+    console.log(e);
+    this.current_page = parseInt(e.pageIndex) + 1;
+    console.log(this.current_page);
+    this.getAdmin();
   }
 }
 

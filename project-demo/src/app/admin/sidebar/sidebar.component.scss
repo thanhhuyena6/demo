@@ -1,0 +1,8 @@
+@media screen and ( max-width: 576px) {
+  ::ng-deep mat-sidenav-content.admin {
+    width: 100% !important;
+  }
+}
+.sidebar-title {
+  margin-bottom: 20px;
+}

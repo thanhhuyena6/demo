@@ -50,6 +50,9 @@ import { ListAdminComponent } from './admin/sidebar/list-admin/list-admin.compon
 import { ListUserComponent } from './admin/sidebar/list-user/list-user.component';
 import { CreateAdminComponent } from './admin/sidebar/create-admin/create-admin.component';
 import { UpdateAdminComponent } from './admin/sidebar/update-admin/update-admin.component';
+import {MatTableModule} from '@angular/material/table';
+import {DashboardComponent} from './admin/sidebar/dashboard/dashboard.component';
+
 
 
 @NgModule({
@@ -88,6 +91,7 @@ import { UpdateAdminComponent } from './admin/sidebar/update-admin/update-admin.
     ListUserComponent,
     CreateAdminComponent,
     UpdateAdminComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +106,7 @@ import { UpdateAdminComponent } from './admin/sidebar/update-admin/update-admin.
     FileModule,
     SlickCarouselModule,
     RouterModule,
+    MatTableModule,
   ],
   providers: [MenuService,
     // {

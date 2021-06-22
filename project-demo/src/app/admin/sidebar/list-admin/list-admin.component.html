@@ -1,41 +1,48 @@
 <button class="btn btn-primary" (click)="openDialog()">Create</button>
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+  <div   *ngIf="dataSource">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> Username </th>
-      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
-    </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element ; let i = index"> {{i+1}} </td>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Created_at</th>
-      <td mat-cell *matCellDef="let element">{{element.created_at}}</td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Username</th>
+        <td mat-cell *matCellDef="let element">{{element.username}}</td>
+      </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef>Updated_at</th>
-      <td mat-cell *matCellDef="let element">{{element.updated_at}}</td>
-    </ng-container>
+      <!-- Create Column -->
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef> Created_at </th>
+        <td mat-cell *matCellDef="let element">{{element.created_at}}</td>
+      </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef>Action</th>
-      <td mat-cell *matCellDef="let element">
-        <div>
-          <button class="btn btn-success" (click)="delete(element.id)">Delete</button>
-          <button class="btn btn-success" (click)="openDialogEdit(element.id)">Edit</button>
-        </div>
-      </td>
-    </ng-container>
+      <!-- Update Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef> Update_at </th>
+        <td mat-cell *matCellDef="let element">{{element.updated_at}}</td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+          <div>
+            <button class="btn btn-success" style="margin-right: 20px" (click)="delete(element.id)">Delete</button>
+            <button class="btn btn-success" (click)="openDialogEdit(element.id)">Edit</button>
+          </div>
+        </td>
+      </ng-container>
 
-  <mat-paginator #paginator [pageIndex]=0 [pageSize]=20
-    [pageSizeOptions]="[20]" showFirstLastButtons>
-  </mat-paginator>
-</div>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]="length" [pageSize]=10 (page)="changePage($event)"
+                   [pageSizeOptions]="[10]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+

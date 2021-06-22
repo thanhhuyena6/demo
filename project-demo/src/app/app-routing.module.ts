@@ -164,6 +164,10 @@ const routes: Routes = [
             path: 'list-user',
             component: ListUserComponent,
           },
+          {
+            path: 'dashboard',
+            component: DashboardComponent,
+          },
         ],
       },
     ],

@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Category} from '../../model/category';
 import {AdminList} from '../../model/admin-list';
+import {Dashboard} from '../../model/dashboard';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,13 @@ export class AdminListService {
   private showAdminUrl = `https://project-demo-gumi.herokuapp.com/api/admin/show`;
   private updateAdminUrl = `https://project-demo-gumi.herokuapp.com/api/admin/update`;
   private deleteAdminUrl = `https://project-demo-gumi.herokuapp.com/api/admin/destroy`;
+  private dashboardAdminUrl = `https://project-demo-gumi.herokuapp.com/api/admin/order/statistical`;
 
   constructor(private http: HttpClient,
               private router: Router) { }
   private authenSubject = new BehaviorSubject(false);
-  getAdmin(): Observable<AdminList[]>{
-    return this.http.get<AdminList[]>(this.adminUrl, { headers: this.getTokenProfile()});
+  getAdmin(paginator:any): Observable<AdminList[]>{
+    return this.http.get<AdminList[]>(`${this.adminUrl}${paginator}`, { headers: this.getTokenProfile()});
   }
   getAdminDetail(adminId: any) {
     let url = `${this.showAdminUrl}/${adminId}`
@@ -56,5 +58,9 @@ export class AdminListService {
     return this.http.delete(url, {
       headers: this.getTokenProfile(),
     });
+  }
+
+  getDashboardAdmin(): Observable<Dashboard>{
+    return this.http.post<Dashboard>(this.dashboardAdminUrl,null, { headers: this.getTokenProfile()});
   }
 }
