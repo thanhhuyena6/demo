@@ -16,6 +16,8 @@ export class AdminListService {
   private updateAdminUrl = `https://project-demo-gumi.herokuapp.com/api/admin/update`;
   private deleteAdminUrl = `https://project-demo-gumi.herokuapp.com/api/admin/destroy`;
   private dashboardAdminUrl = `https://project-demo-gumi.herokuapp.com/api/admin/order/statistical`;
+  private logoutUrl = `https://project-demo-gumi.herokuapp.com/api/admin/logout`;
+
 
   constructor(private http: HttpClient,
               private router: Router) { }
@@ -62,5 +64,9 @@ export class AdminListService {
 
   getDashboardAdmin(): Observable<Dashboard>{
     return this.http.post<Dashboard>(this.dashboardAdminUrl,null, { headers: this.getTokenProfile()});
+  }
+
+  logout() {
+    return this.http.get(`${this.logoutUrl}`);
   }
 }

@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
 
   getDashboard(){
     this.adminService.getDashboardAdmin().subscribe((res:any) => {
-      console.log(res.data);
       this.dataSource.data = res.data;
       this.dashboard = res.data;
     })

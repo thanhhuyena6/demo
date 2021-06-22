@@ -26,12 +26,7 @@ export class AdminLoginComponent implements OnInit {
               private router: Router,
               private cartService: CartService,
               private fb: FormBuilder,
-              private _snackBar: MatSnackBar,
-              private modalService: BsModalService,
-              private alertService: AlertService) {
-    // if (this.authService.isLoggedIn()){
-    //   this.router.navigate(['/home']);
-    // }
+              private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -44,7 +39,6 @@ export class AdminLoginComponent implements OnInit {
   userLogin() {
     this.authService.adminLogin(this.authCredentialsDto.value).subscribe(
       (res) => {
-        console.log(res)
         if (res.access_token !== undefined) {
           localStorage.setItem('tokenAdmin', res.access_token);
           this.messageError = res.message;
@@ -58,9 +52,6 @@ export class AdminLoginComponent implements OnInit {
     );
   }
 
-  // openModal(template: TemplateRef<any>){
-  //   this.modalRef = this.modalService.show(template);
-  // }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
   }

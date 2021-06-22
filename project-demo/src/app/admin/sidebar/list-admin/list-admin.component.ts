@@ -47,7 +47,6 @@ export class ListAdminComponent implements OnInit {
     this.common.loadAdmin.subscribe((value: any) => {
       this.getAdmin();
     });
-    this.dataSource.paginator = this.paginator;
   }
 
   getAdmin(){
